@@ -1,0 +1,434 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		350EF5C02BCDC0A60036E1A8 /* HealthPulseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350EF5BF2BCDC0A60036E1A8 /* HealthPulseApp.swift */; };
+		350EF5C22BCDC0A60036E1A8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350EF5C12BCDC0A60036E1A8 /* ContentView.swift */; };
+		350EF5C42BCDC0A80036E1A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 350EF5C32BCDC0A80036E1A8 /* Assets.xcassets */; };
+		350EF5C82BCDC0A80036E1A8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 350EF5C72BCDC0A80036E1A8 /* Preview Assets.xcassets */; };
+		350EF5D32BCDC1610036E1A8 /* HealthDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350EF5D22BCDC1610036E1A8 /* HealthDataManager.swift */; };
+		350EF5D52BCDC1830036E1A8 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350EF5D42BCDC1830036E1A8 /* FileManager.swift */; };
+		350EF5D72BCDC19D0036E1A8 /* HealthGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350EF5D62BCDC19D0036E1A8 /* HealthGoal.swift */; };
+		350EF5DA2BCDC1CE0036E1A8 /* WidgetPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350EF5D92BCDC1CE0036E1A8 /* WidgetPreviewView.swift */; };
+		350EF5DD2BCDC2430036E1A8 /* GoalDetailViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350EF5DC2BCDC2430036E1A8 /* GoalDetailViewViewModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		350EF5BC2BCDC0A60036E1A8 /* HealthPulse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthPulse.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		350EF5BF2BCDC0A60036E1A8 /* HealthPulseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthPulseApp.swift; sourceTree = "<group>"; };
+		350EF5C12BCDC0A60036E1A8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		350EF5C32BCDC0A80036E1A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		350EF5C52BCDC0A80036E1A8 /* HealthPulse.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HealthPulse.entitlements; sourceTree = "<group>"; };
+		350EF5C72BCDC0A80036E1A8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		350EF5D22BCDC1610036E1A8 /* HealthDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataManager.swift; sourceTree = "<group>"; };
+		350EF5D42BCDC1830036E1A8 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		350EF5D62BCDC19D0036E1A8 /* HealthGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthGoal.swift; sourceTree = "<group>"; };
+		350EF5D92BCDC1CE0036E1A8 /* WidgetPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetPreviewView.swift; sourceTree = "<group>"; };
+		350EF5DC2BCDC2430036E1A8 /* GoalDetailViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetailViewViewModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		350EF5B92BCDC0A60036E1A8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		350EF5B32BCDC0A60036E1A8 = {
+			isa = PBXGroup;
+			children = (
+				350EF5BE2BCDC0A60036E1A8 /* HealthPulse */,
+				350EF5BD2BCDC0A60036E1A8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		350EF5BD2BCDC0A60036E1A8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				350EF5BC2BCDC0A60036E1A8 /* HealthPulse.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		350EF5BE2BCDC0A60036E1A8 /* HealthPulse */ = {
+			isa = PBXGroup;
+			children = (
+				350EF5BF2BCDC0A60036E1A8 /* HealthPulseApp.swift */,
+				350EF5CF2BCDC1250036E1A8 /* Services */,
+				350EF5D02BCDC12B0036E1A8 /* Utils */,
+				350EF5D12BCDC1310036E1A8 /* Models */,
+				350EF5CE2BCDC11B0036E1A8 /* Views */,
+				350EF5C32BCDC0A80036E1A8 /* Assets.xcassets */,
+				350EF5C52BCDC0A80036E1A8 /* HealthPulse.entitlements */,
+				350EF5C62BCDC0A80036E1A8 /* Preview Content */,
+			);
+			path = HealthPulse;
+			sourceTree = "<group>";
+		};
+		350EF5C62BCDC0A80036E1A8 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				350EF5C72BCDC0A80036E1A8 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		350EF5CE2BCDC11B0036E1A8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				350EF5D82BCDC1B60036E1A8 /* WidgetPreviewView */,
+				350EF5DB2BCDC2020036E1A8 /* GoalDetailView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		350EF5CF2BCDC1250036E1A8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				350EF5D22BCDC1610036E1A8 /* HealthDataManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		350EF5D02BCDC12B0036E1A8 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				350EF5D42BCDC1830036E1A8 /* FileManager.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		350EF5D12BCDC1310036E1A8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				350EF5D62BCDC19D0036E1A8 /* HealthGoal.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		350EF5D82BCDC1B60036E1A8 /* WidgetPreviewView */ = {
+			isa = PBXGroup;
+			children = (
+				350EF5D92BCDC1CE0036E1A8 /* WidgetPreviewView.swift */,
+			);
+			path = WidgetPreviewView;
+			sourceTree = "<group>";
+		};
+		350EF5DB2BCDC2020036E1A8 /* GoalDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				350EF5C12BCDC0A60036E1A8 /* ContentView.swift */,
+				350EF5DC2BCDC2430036E1A8 /* GoalDetailViewViewModel.swift */,
+			);
+			path = GoalDetailView;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		350EF5BB2BCDC0A60036E1A8 /* HealthPulse */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 350EF5CB2BCDC0A80036E1A8 /* Build configuration list for PBXNativeTarget "HealthPulse" */;
+			buildPhases = (
+				350EF5B82BCDC0A60036E1A8 /* Sources */,
+				350EF5B92BCDC0A60036E1A8 /* Frameworks */,
+				350EF5BA2BCDC0A60036E1A8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HealthPulse;
+			productName = HealthPulse;
+			productReference = 350EF5BC2BCDC0A60036E1A8 /* HealthPulse.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		350EF5B42BCDC0A60036E1A8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					350EF5BB2BCDC0A60036E1A8 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+				};
+			};
+			buildConfigurationList = 350EF5B72BCDC0A60036E1A8 /* Build configuration list for PBXProject "HealthPulse" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 350EF5B32BCDC0A60036E1A8;
+			productRefGroup = 350EF5BD2BCDC0A60036E1A8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				350EF5BB2BCDC0A60036E1A8 /* HealthPulse */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		350EF5BA2BCDC0A60036E1A8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				350EF5C82BCDC0A80036E1A8 /* Preview Assets.xcassets in Resources */,
+				350EF5C42BCDC0A80036E1A8 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		350EF5B82BCDC0A60036E1A8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				350EF5D72BCDC19D0036E1A8 /* HealthGoal.swift in Sources */,
+				350EF5DA2BCDC1CE0036E1A8 /* WidgetPreviewView.swift in Sources */,
+				350EF5C22BCDC0A60036E1A8 /* ContentView.swift in Sources */,
+				350EF5C02BCDC0A60036E1A8 /* HealthPulseApp.swift in Sources */,
+				350EF5DD2BCDC2430036E1A8 /* GoalDetailViewViewModel.swift in Sources */,
+				350EF5D32BCDC1610036E1A8 /* HealthDataManager.swift in Sources */,
+				350EF5D52BCDC1830036E1A8 /* FileManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		350EF5C92BCDC0A80036E1A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		350EF5CA2BCDC0A80036E1A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		350EF5CC2BCDC0A80036E1A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HealthPulse/HealthPulse.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"HealthPulse/Preview Content\"";
+				DEVELOPMENT_TEAM = 8KT99V2DNB;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lmg.HealthPulse;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		350EF5CD2BCDC0A80036E1A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HealthPulse/HealthPulse.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"HealthPulse/Preview Content\"";
+				DEVELOPMENT_TEAM = 8KT99V2DNB;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lmg.HealthPulse;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		350EF5B72BCDC0A60036E1A8 /* Build configuration list for PBXProject "HealthPulse" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				350EF5C92BCDC0A80036E1A8 /* Debug */,
+				350EF5CA2BCDC0A80036E1A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		350EF5CB2BCDC0A80036E1A8 /* Build configuration list for PBXNativeTarget "HealthPulse" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				350EF5CC2BCDC0A80036E1A8 /* Debug */,
+				350EF5CD2BCDC0A80036E1A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 350EF5B42BCDC0A60036E1A8 /* Project object */;
+}
