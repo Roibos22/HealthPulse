@@ -7,41 +7,84 @@
 
 import SwiftUI
 
+enum UnitSelection {
+  case miles
+  case kilometers
+}
+
 struct GoalDetailView: View {
 
     @EnvironmentObject var manager: HealthDataManager
     @ObservedObject var vm: GoalDetailViewViewModel
     @FocusState private var focusItem: Bool
+    @State private var selectedUnit: UnitSelection = .miles // Default selection
 
     @State private var numberString: String = ""
 
     var body: some View {
         NavigationView {
             ScrollView {
-                    VStack {
-                        HStack {
-                            Text("Goal")
-                            Spacer()
-                            TextField("Goal", text: $numberString)
-                                .keyboardType(.decimalPad) // Optional: Set keyboard for decimals
-                                .focused($focusItem)
-                                .frame(width: 50)
+
+                // Goal Information
+                VStack {
+                    
+                    HStack {
+                        Spacer()
+                        HStack{
+                            TextField("Enter Goal", text: $numberString)
+                              .keyboardType(.decimalPad) // Optional: Set keyboard for decimals
+                              .focused($focusItem)
+                              .frame(width: 120)
+                              .padding(5) // Add some padding between text and border
+                              .background(
+                                RoundedRectangle(cornerRadius: 8) // Set corner radius
+                                  .fill(Color.gray.opacity(0.2)) // Set background color and opacity
+                              )
+                              .multilineTextAlignment(.center) // Center the text
                         }
-                        
-                            
-                        DatePicker(selection: $vm.selectedHealthGoal.startDate, in: ...vm.selectedHealthGoal.endDate, displayedComponents: .date) { Text("Start") }
-                            .onChange(of: vm.selectedHealthGoal.startDate) { _ in
-                                vm.updateData()
-                            }
-                        DatePicker(selection: $vm.selectedHealthGoal.endDate, in: vm.selectedHealthGoal.startDate...Calendar.current.date(byAdding: .year, value: 10, to: Date())!, displayedComponents: .date) { Text("End") }
-                            .onChange(of: vm.selectedHealthGoal.endDate) { _ in
-                                vm.updateData()
-                            }
+                        Spacer()
+                        HStack {
+                            Picker("Unit", selection: $selectedUnit) {
+                                Text("mi").tag(UnitSelection.miles)
+                                Text("km").tag(UnitSelection.kilometers)
+                              }
+                            .pickerStyle(.segmented)
+                            .frame(width: 120)
+                        }
+                        Spacer()
                     }
-                    .frame(width: 300)
+                    .padding(.bottom, 10)
+
+                    HStack(alignment: .center) {
+                        Spacer()
+                        VStack {
+                            Text("Start")
+                                .bold()
+                            DatePicker("", selection: $vm.selectedHealthGoal.startDate, in: ...vm.selectedHealthGoal.endDate, displayedComponents: .date)
+                                .onChange(of: vm.selectedHealthGoal.startDate) { _ in vm.updateData() }
+                                .labelsHidden()
+                        }
+                        Spacer()
+                        VStack {
+                            Text("End")
+                                .bold()
+                            DatePicker("", selection: $vm.selectedHealthGoal.endDate, in: vm.selectedHealthGoal.startDate...Calendar.current.date(byAdding: .year, value: 10, to: Date())!, displayedComponents: .date)
+                                .onChange(of: vm.selectedHealthGoal.endDate) { _ in vm.updateData() }
+                                .labelsHidden()
+                        }
+                        Spacer()
+                    }
+                    .frame(maxWidth: .infinity)
+                }
+                .padding(.vertical, 20)
+                VStack {
+                    Text("Widget Preview")
+                        .font(.title2)
+                        .bold()
+                    WidgetPreView(healthGoal: vm.selectedHealthGoal)
+                }
+                .padding(.vertical)
                 
-                
-                WidgetPreView(healthGoal: vm.selectedHealthGoal)
                 
                 Spacer()
                 
@@ -71,7 +114,7 @@ struct GoalDetailView: View {
 
                 }
             }
-            .navigationTitle("Running Goal")
+            .navigationTitle("Your Running Goal")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Done") {
@@ -97,8 +140,6 @@ struct GoalDetailView: View {
 }
 
 #Preview {
-    let manager = HealthDataManager()
     return GoalDetailView(vm: GoalDetailViewViewModel())
-                //.environmentObject(manager)
 }
 
