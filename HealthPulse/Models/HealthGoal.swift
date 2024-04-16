@@ -44,7 +44,7 @@ extension Color {
     }
 }
 
-enum WidgetBackground: String, Codable {
+enum WidgetColorSet: String, Codable {
     case white
     case gray
     case black
@@ -52,7 +52,7 @@ enum WidgetBackground: String, Codable {
     case yellow
     case red
     
-    var color: Color {
+    var background: Color {
         switch self {
         case .white: return Color(hex: "FFFFFF")
         case .gray: return Color(hex: "2C2C2E")
@@ -62,8 +62,41 @@ enum WidgetBackground: String, Codable {
         case .red: return Color(hex: "AE2012")
         }
     }
+    
+    var foreground: Color {
+        switch self {
+        case .white: return Color(hex: "000000")
+        case .gray: return Color(hex: "FFFFFF")
+        case .black: return Color(hex: "FFFFFF")
+        case .blue: return Color(hex: "000000")
+        case .yellow: return Color(hex: "000000")
+        case .red: return Color(hex: "000000")
+        }
+    }
+    
+    var positive: Color {
+        switch self {
+        case .white: return Color(hex: "4cd964")
+        case .gray: return Color(hex: "4cd964")
+        case .black: return Color(hex: "4cd964")
+        case .blue: return Color(hex: "4cd964")
+        case .yellow: return Color(hex: "4cd964")
+        case .red: return Color(hex: "4cd964")
+        }
+    }
+    
+    var negative: Color {
+        switch self {
+        case .white: return Color(hex: "ff3b30")
+        case .gray: return Color(hex: "ff3b30")
+        case .black: return Color(hex: "ff3b30")
+        case .blue: return Color(hex: "ff3b30")
+        case .yellow: return Color(hex: "ff3b30")
+        case .red: return Color(hex: "ff3b30")
+        }
+    }
 }
-let widgetBackgroundColors: [WidgetBackground] = [.white, .gray, .black, .blue, .red]
+let widgetColorSets: [WidgetColorSet] = [.white, .gray, .black, .blue, .yellow, .red]
 
 struct HealthGoal: Identifiable, Codable, Equatable {
     var id: UUID = UUID()
@@ -78,10 +111,10 @@ struct HealthGoal: Identifiable, Codable, Equatable {
     var expectedUnits: Double
     var data: [HealthDataPoint]
     var graphType: GraphType
-    var background: WidgetBackground
+    var colorSet: WidgetColorSet
     
     func updateCompletion() -> HealthGoal {
-        return HealthGoal(id: id, title: title, goalType: goalType, startDate: startDate, endDate: endDate, doneUnits: doneUnits, goalUnits: goalUnits, actualProgress: actualProgress, expectedProgress: expectedProgress, expectedUnits: expectedUnits, data: data, graphType: .circle, background: .black)
+        return HealthGoal(id: id, title: title, goalType: goalType, startDate: startDate, endDate: endDate, doneUnits: doneUnits, goalUnits: goalUnits, actualProgress: actualProgress, expectedProgress: expectedProgress, expectedUnits: expectedUnits, data: data, graphType: .circle, colorSet: .black)
     }
 }
 
@@ -105,5 +138,5 @@ let sampleHealthGoal = HealthGoal(
     expectedUnits: 30.0,
     data: sampleDataPoints, 
     graphType: .circle,
-    background: .black
+    colorSet: .black
 )

@@ -101,9 +101,9 @@ struct GoalDetailView: View {
                             Text("Color")
                                 .bold()
                             Spacer()
-                            ForEach(widgetBackgroundColors, id: \.self) { color in
+                            ForEach(widgetColorSets, id: \.self) { set in
                                 Circle()
-                                    .foregroundColor(color.color)
+                                    .foregroundColor(set.background)
                                     .frame(width: 30, height: 30)
                                     .overlay(
                                         Circle()
@@ -113,7 +113,7 @@ struct GoalDetailView: View {
                                     )
                                     .onTapGesture {
                                         withAnimation {
-                                            vm.selectedHealthGoal.background = color
+                                            vm.selectedHealthGoal.colorSet = set
                                         }
                                     }
                             }

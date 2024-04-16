@@ -10,8 +10,6 @@ import Charts
 
 struct CircleGraphView: View {
     let healthGoal: HealthGoal
-    let actualProgressColor: Color
-    let expectedProgressColor: Color
     let strokeWidth: CGFloat = 15
     
     var body: some View {
@@ -25,16 +23,17 @@ struct CircleGraphView: View {
             Circle()
                 .trim(from: 0.0, to: healthGoal.expectedProgress)
                 .stroke(style: StrokeStyle(lineWidth: strokeWidth, lineCap: .round))
-                .foregroundColor(expectedProgressColor)
+                .foregroundColor(healthGoal.colorSet.negative)
                 .rotationEffect(Angle(degrees: -90))
             
             Circle()
                 .trim(from: 0.0, to: healthGoal.actualProgress)
                 .stroke(style: StrokeStyle(lineWidth: strokeWidth, lineCap: .round))
-                .foregroundColor(actualProgressColor)
+                .foregroundColor(healthGoal.colorSet.positive)
                 .rotationEffect(Angle(degrees: -90))
             
             Text(String(format: "%.0f%%", healthGoal.actualProgress * 100))
+                .foregroundColor(healthGoal.colorSet.foreground)
 
         }
     }
@@ -125,7 +124,7 @@ struct WidgetPreView: View {
                 
                 VStack {
                     if healthGoal.graphType == .circle {
-                        CircleGraphView(healthGoal: healthGoal, actualProgressColor: .green, expectedProgressColor: .red)
+                        CircleGraphView(healthGoal: healthGoal)
                     } else {
                         LineChartGraphView(healthGoal: healthGoal)
                     }
@@ -158,13 +157,14 @@ struct WidgetPreView: View {
                     //.background(.blue)
                     
                 }
+                .foregroundColor(healthGoal.colorSet.foreground)
                 
                 
                 
             }
             .padding(10)
             .frame(width: 170, height: 170)
-            .background(healthGoal.background.color) // Use system background color
+            .background(healthGoal.colorSet.background)
             .cornerRadius(20) // Rounded corners for the widget-like appearance
             //.shadow(color: .gray, radius: 5, x: 0, y: 2) // Shadow for depth
             .overlay(

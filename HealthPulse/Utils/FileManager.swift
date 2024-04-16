@@ -8,7 +8,7 @@
 import Foundation
 
 class LocalFileManager {
-    
+     
     // Singleton
     static let instance = LocalFileManager()
     private init() {}
