@@ -11,6 +11,7 @@ struct HealthDataPoint: Identifiable, Codable, Equatable {
     var id: UUID = UUID()
     var date: Date
     var units: Double
+    var unitsAcc: Double
 }
 
 enum GoalType: Codable {
@@ -36,20 +37,21 @@ struct HealthGoal: Identifiable, Codable, Equatable {
 }
 
 let sampleDataPoints: [HealthDataPoint] = [
-    HealthDataPoint(date: Date().addingTimeInterval(-86400 * 4), units: 7500),
-    HealthDataPoint(date: Date().addingTimeInterval(-86400 * 3), units: 5600),
-    HealthDataPoint(date: Date().addingTimeInterval(-86400 * 2), units: 8300),
-    HealthDataPoint(date: Date().addingTimeInterval(-86400 * 1), units: 9400)
+//    HealthDataPoint(date: Date().addingTimeInterval(-86400 * 7), units: 0, unitsAcc: 0),
+    HealthDataPoint(date: Date().addingTimeInterval(-86400 * 7), units: 7.500, unitsAcc: 7.500),
+    HealthDataPoint(date: Date().addingTimeInterval(-86400 * 3), units: 5.600, unitsAcc: 13.100),
+    HealthDataPoint(date: Date().addingTimeInterval(-86400 * 2), units: 8.300, unitsAcc: 21.400),
+    HealthDataPoint(date: Date().addingTimeInterval(86400 * 1), units: 9.400, unitsAcc: 30.800)
 ]
 
 let sampleHealthGoal = HealthGoal(
     title: "Daily Step Goal",
     goalType: .running,
-    startDate: Date().addingTimeInterval(-86400 * 4),  // Start date 4 days ago
-    endDate: Date().addingTimeInterval(86400 * 3),     // End date 3 days from now
-    doneUnits: 100.0,
-    goalUnits: 1000.0,
-    actualProgress: 0.1,
+    startDate: Date().addingTimeInterval(-86400 * 7),  // Start date 7 days ago
+    endDate: Date().addingTimeInterval(86400 * 7),     // End date 7 days from now
+    doneUnits: 30.8,
+    goalUnits: 50.0,
+    actualProgress: 0.308,
     expectedProgress: 0.3,
     expectedUnits: 30.0,
     data: sampleDataPoints
