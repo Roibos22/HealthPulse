@@ -12,10 +12,6 @@ enum UnitSelection {
   case kilometers
 }
 
-enum GraphSelection {
-  case circle
-  case chart
-}
 
 struct GoalDetailView: View {
 
@@ -23,9 +19,7 @@ struct GoalDetailView: View {
     @ObservedObject var vm: GoalDetailViewViewModel
     @FocusState private var focusItem: Bool
     @State private var selectedUnit: UnitSelection = .miles // Default selection
-    @State private var selectedGraph: GraphSelection = .circle // Default selection
-    let colorOptions: [Color] = [.red, .green, .blue, .orange, .purple]
-    @State private var selectedColor: Color = .red // Initial selected color
+    @State private var selectedGraph: GraphType = .circle // Default selection
 
     @State private var numberString: String = ""
 
@@ -94,9 +88,9 @@ struct GoalDetailView: View {
                             Text("Graph")
                                 .bold()
                             Spacer()
-                            Picker("Graph", selection: $selectedGraph) {
-                                Text("Chart").tag(GraphSelection.chart)
-                                Text("Circle").tag(GraphSelection.circle)
+                            Picker("Graph", selection: $vm.selectedHealthGoal.graphType) {
+                                Text("Chart").tag(GraphType.lineChart)
+                                Text("Circle").tag(GraphType.circle)
                             }
                             .pickerStyle(.segmented)
                             .frame(width: 200)
@@ -107,18 +101,19 @@ struct GoalDetailView: View {
                             Text("Color")
                                 .bold()
                             Spacer()
-                            ForEach(colorOptions, id: \.self) { color in
+                            ForEach(widgetBackgroundColors, id: \.self) { color in
                                 Circle()
-                                    .foregroundColor(color)
+                                    .foregroundColor(color.color)
                                     .frame(width: 30, height: 30)
                                     .overlay(
                                         Circle()
-                                            .stroke(color, lineWidth: 7) // White stroke for all circles
-                                            .opacity(color == selectedColor ? 1.0 : 0.0) // Hide stroke for non-selected
+                                            .stroke(.white, lineWidth: 2)
+                                            //.stroke(color.color, lineWidth: 7)
+                                            //.opacity(color == vm.selectedHealthGoal.background ? 1.0 : 0.0)
                                     )
                                     .onTapGesture {
                                         withAnimation {
-                                            selectedColor = color
+                                            vm.selectedHealthGoal.background = color
                                         }
                                     }
                             }

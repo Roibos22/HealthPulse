@@ -8,7 +8,7 @@
 import SwiftUI
 import Charts
 
-struct CircularProgressView: View {
+struct CircleGraphView: View {
     let healthGoal: HealthGoal
     let actualProgressColor: Color
     let expectedProgressColor: Color
@@ -40,7 +40,7 @@ struct CircularProgressView: View {
     }
 }
 
-struct ChartView: View {
+struct LineChartGraphView: View {
     let healthGoal: HealthGoal
     
     var body: some View {
@@ -101,7 +101,6 @@ struct ChartView: View {
 
 
 
-
 struct WidgetPreView: View {
     
     var healthGoal: HealthGoal
@@ -123,11 +122,17 @@ struct WidgetPreView: View {
             ZStack {
                 
                 Spacer()
-                ChartView(healthGoal: healthGoal)
-                //CircularProgressView(healthGoal: healthGoal, actualProgressColor: .green, expectedProgressColor: .red)
-                    .padding(5)
-                    .frame(height: 80)
-                    .frame(maxWidth: .infinity)
+                
+                VStack {
+                    if healthGoal.graphType == .circle {
+                        CircleGraphView(healthGoal: healthGoal, actualProgressColor: .green, expectedProgressColor: .red)
+                    } else {
+                        LineChartGraphView(healthGoal: healthGoal)
+                    }
+                }
+                .padding(5)
+                .frame(height: 80)
+                .frame(maxWidth: .infinity)
                 
                 VStack {
                     HStack {
@@ -139,7 +144,7 @@ struct WidgetPreView: View {
                     }
                     //.background(.blue)
                     
-                   Spacer()
+                    Spacer()
                     
                     HStack {
                         Text(String(format: "%.1f km", healthGoal.doneUnits))
@@ -151,7 +156,7 @@ struct WidgetPreView: View {
                     .bold()
                     .padding(.bottom, 5)
                     //.background(.blue)
-
+                    
                 }
                 
                 
@@ -159,13 +164,14 @@ struct WidgetPreView: View {
             }
             .padding(10)
             .frame(width: 170, height: 170)
-            .background(Color(.systemBackground)) // Use system background color
+            .background(healthGoal.background.color) // Use system background color
             .cornerRadius(20) // Rounded corners for the widget-like appearance
-            .shadow(color: .gray, radius: 5, x: 0, y: 2) // Shadow for depth
+            //.shadow(color: .gray, radius: 5, x: 0, y: 2) // Shadow for depth
             .overlay(
-                RoundedRectangle(cornerRadius: 16)
+                RoundedRectangle(cornerRadius: 20)
                     .stroke(Color.gray, lineWidth: 1) // Gray outline
             )
+
             
             VStack {
                 

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct HealthDataPoint: Identifiable, Codable, Equatable {
     var id: UUID = UUID()
@@ -17,6 +18,52 @@ struct HealthDataPoint: Identifiable, Codable, Equatable {
 enum GoalType: Codable {
     case running
 }
+
+enum GraphType: Codable {
+    case circle
+    case lineChart
+}
+
+extension Color {
+    init(hex: String) {
+        let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
+        var int = UInt64()
+        Scanner(string: hex).scanHexInt64(&int)
+        let a, r, g, b: UInt64
+        switch hex.count {
+        case 3: // RGB (12-bit)
+            (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
+        case 6: // RGB (24-bit)
+            (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
+        case 8: // ARGB (32-bit)
+            (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
+        default:
+            (a, r, g, b) = (255, 0, 0, 0)
+        }
+        self.init(.sRGB, red: Double(r) / 255, green: Double(g) / 255, blue:  Double(b) / 255, opacity: Double(a) / 255)
+    }
+}
+
+enum WidgetBackground: String, Codable {
+    case white
+    case gray
+    case black
+    case blue
+    case yellow
+    case red
+    
+    var color: Color {
+        switch self {
+        case .white: return Color(hex: "FFFFFF")
+        case .gray: return Color(hex: "2C2C2E")
+        case .black: return Color(hex: "000000")
+        case .blue: return Color(hex: "2C7DA0")
+        case .yellow: return Color(hex: "FFBE0B")
+        case .red: return Color(hex: "AE2012")
+        }
+    }
+}
+let widgetBackgroundColors: [WidgetBackground] = [.white, .gray, .black, .blue, .red]
 
 struct HealthGoal: Identifiable, Codable, Equatable {
     var id: UUID = UUID()
@@ -30,9 +77,11 @@ struct HealthGoal: Identifiable, Codable, Equatable {
     var expectedProgress: Double
     var expectedUnits: Double
     var data: [HealthDataPoint]
+    var graphType: GraphType
+    var background: WidgetBackground
     
     func updateCompletion() -> HealthGoal {
-        return HealthGoal(id: id, title: title, goalType: goalType, startDate: startDate, endDate: endDate, doneUnits: doneUnits, goalUnits: goalUnits, actualProgress: actualProgress, expectedProgress: expectedProgress, expectedUnits: expectedUnits, data: data)
+        return HealthGoal(id: id, title: title, goalType: goalType, startDate: startDate, endDate: endDate, doneUnits: doneUnits, goalUnits: goalUnits, actualProgress: actualProgress, expectedProgress: expectedProgress, expectedUnits: expectedUnits, data: data, graphType: .circle, background: .black)
     }
 }
 
@@ -54,5 +103,7 @@ let sampleHealthGoal = HealthGoal(
     actualProgress: 0.308,
     expectedProgress: 0.3,
     expectedUnits: 30.0,
-    data: sampleDataPoints
+    data: sampleDataPoints, 
+    graphType: .circle,
+    background: .black
 )
