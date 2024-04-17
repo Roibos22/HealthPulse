@@ -97,7 +97,7 @@ struct GoalSetupView: View {
             .frame(maxWidth: .infinity)
         }
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
+            ToolbarItem(placement: .keyboard) {
                 Button("Done") {
                     focusItem = false
                     vm.selectedHealthGoal.goalUnits = Double(vm.numberString) ?? 0.0
