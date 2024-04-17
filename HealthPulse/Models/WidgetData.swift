@@ -8,10 +8,6 @@
 import Foundation
 import SwiftUI
 
-struct WidgetData {
-    
-}
-
 enum WidgetColorSet: String, Codable {
     case white
     case gray

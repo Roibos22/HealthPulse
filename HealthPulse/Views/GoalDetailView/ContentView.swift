@@ -11,7 +11,9 @@ struct GoalDetailView: View {
 
     @EnvironmentObject var manager: HealthDataManager
     @ObservedObject var vm: GoalDetailViewViewModel
-
+    
+    @State private var showMenuSheet = false
+    
     var body: some View {
         NavigationView {
             ScrollView {
@@ -25,6 +27,20 @@ struct GoalDetailView: View {
                 .padding(.horizontal, 20)
             }
             .navigationTitle("Your Running Goal")
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        showMenuSheet.toggle()
+                    } label: {
+                        Image(systemName: "list.bullet")
+                    }
+                }
+            }
+        }
+        
+        .sheet(isPresented: $showMenuSheet) {
+              SettingsView()
+                .padding()
         }
         .onAppear {
             vm.numberString = String(vm.selectedHealthGoal.goalUnits)
@@ -104,11 +120,6 @@ struct GoalSetupView: View {
                     vm.updateData()
                 }
             }
-            ToolbarItem(placement: .topBarTrailing) {
-                Button("Load") {
-                    vm.loadHealthGoals()
-                }
-            }
         }
     }
 }
@@ -164,6 +175,8 @@ struct WidgetSetupView: View {
 }
 
 #Preview {
-    return GoalDetailView(vm: GoalDetailViewViewModel())
+    NavigationView {
+        GoalDetailView(vm: GoalDetailViewViewModel())
+    }
 }
 

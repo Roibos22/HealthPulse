@@ -20,6 +20,7 @@
 		353A34F82BCFC30F00BE01D4 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353A34F72BCFC30F00BE01D4 /* Color.swift */; };
 		353A34FB2BCFC7B900BE01D4 /* CircleGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353A34FA2BCFC7B900BE01D4 /* CircleGraphView.swift */; };
 		353A34FD2BCFC85B00BE01D4 /* LineChartGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353A34FC2BCFC85B00BE01D4 /* LineChartGraphView.swift */; };
+		3578E3CB2BD065CB00F3AD2C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3578E3CA2BD065CB00F3AD2C /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		353A34F72BCFC30F00BE01D4 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		353A34FA2BCFC7B900BE01D4 /* CircleGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleGraphView.swift; sourceTree = "<group>"; };
 		353A34FC2BCFC85B00BE01D4 /* LineChartGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartGraphView.swift; sourceTree = "<group>"; };
+		3578E3CA2BD065CB00F3AD2C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		358B9FBE2BCDC78500752687 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,6 +97,7 @@
 		350EF5CE2BCDC11B0036E1A8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3555D7C92BD0658B005668FE /* SettingsView */,
 				350EF5D82BCDC1B60036E1A8 /* WidgetPreviewView */,
 				350EF5DB2BCDC2020036E1A8 /* GoalDetailView */,
 			);
@@ -160,6 +163,14 @@
 				353A34FC2BCFC85B00BE01D4 /* LineChartGraphView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		3555D7C92BD0658B005668FE /* SettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				3578E3CA2BD065CB00F3AD2C /* SettingsView.swift */,
+			);
+			path = SettingsView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +252,7 @@
 				350EF5D32BCDC1610036E1A8 /* HealthDataManager.swift in Sources */,
 				353A34F82BCFC30F00BE01D4 /* Color.swift in Sources */,
 				350EF5D52BCDC1830036E1A8 /* FileManager.swift in Sources */,
+				3578E3CB2BD065CB00F3AD2C /* SettingsView.swift in Sources */,
 				353A34FB2BCFC7B900BE01D4 /* CircleGraphView.swift in Sources */,
 				353A34FD2BCFC85B00BE01D4 /* LineChartGraphView.swift in Sources */,
 			);
