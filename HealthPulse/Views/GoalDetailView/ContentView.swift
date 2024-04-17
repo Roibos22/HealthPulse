@@ -143,10 +143,13 @@ struct WidgetSetupView: View {
                         .foregroundColor(set.background)
                         .frame(width: 30, height: 30)
                         .overlay(
+                            Image(systemName: "checkmark")
+                                .foregroundColor(set.foreground)
+                                .opacity(set == vm.selectedHealthGoal.colorSet ? 1.0 : 0.0)
+                        )
+                        .overlay(
                             Circle()
-                                .stroke(.white, lineWidth: 2)
-                            //.stroke(color.color, lineWidth: 7)
-                            //.opacity(color == vm.selectedHealthGoal.background ? 1.0 : 0.0)
+                                .stroke(set.foreground, lineWidth: 1)
                         )
                         .onTapGesture {
                             withAnimation {
