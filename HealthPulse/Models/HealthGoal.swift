@@ -55,7 +55,7 @@ let sampleDataPoints: [HealthDataPoint] = [
     HealthDataPoint(date: Date().addingTimeInterval(-86400 * 7), units: 7.500, unitsAcc: 7.500),
     HealthDataPoint(date: Date().addingTimeInterval(-86400 * 3), units: 5.600, unitsAcc: 13.100),
     HealthDataPoint(date: Date().addingTimeInterval(-86400 * 2), units: 8.300, unitsAcc: 21.400),
-    HealthDataPoint(date: Date().addingTimeInterval(86400 * 1), units: 9.400, unitsAcc: 30.800)
+    HealthDataPoint(date: Date().addingTimeInterval(86400 * 0), units: 9.400, unitsAcc: 30.800)
 ]
 
 let sampleHealthGoal = HealthGoal(
@@ -69,6 +69,6 @@ let sampleHealthGoal = HealthGoal(
     expectedProgress: 0.3,
     expectedUnits: 30.0,
     data: sampleDataPoints, 
-    graphType: .circle,
+    graphType: .lineChart,
     colorSet: .black
 )

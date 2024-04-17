@@ -12,10 +12,16 @@ struct WidgetPreView: View {
     
     var healthGoal: HealthGoal
     var differenceToExpected: Double
+    var betterThanExpected: Bool
     
     init(healthGoal: HealthGoal) {
         self.healthGoal = healthGoal
-        differenceToExpected =  healthGoal.expectedUnits - healthGoal.doneUnits
+        differenceToExpected = healthGoal.doneUnits - healthGoal.expectedUnits
+        if differenceToExpected >= 0 {
+            betterThanExpected = true
+        } else {
+            betterThanExpected = false
+        }
     }
     
     var body: some View {
@@ -50,7 +56,7 @@ struct WidgetPreView: View {
                         Text(String(format: "%.1f km", healthGoal.doneUnits))
                         Spacer()
                         Text(String(format: "%.1f km", differenceToExpected))
-                            .foregroundColor(differenceToExpected >= 0 ? .green : .red)
+                            .foregroundColor(betterThanExpected ? healthGoal.colorSet.positive : healthGoal.colorSet.negative)
                     }
                     .font(.subheadline)
                     .bold()
