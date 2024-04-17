@@ -25,7 +25,7 @@ class LocalFileManager {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths [0]
     }
-    
+
 //    private func createFolderIfNeeded(folderName: String) {
 //        guard let url = getURLForFolder(folderName: folderName) else { return }
 //        if !FileManager.default.fileExists(atPath: url.path) {
@@ -36,7 +36,6 @@ class LocalFileManager {
 //            }
 //        }
 //    }
-    
 }
 
 extension FileManager {

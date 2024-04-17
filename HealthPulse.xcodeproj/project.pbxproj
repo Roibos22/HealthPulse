@@ -16,6 +16,10 @@
 		350EF5D72BCDC19D0036E1A8 /* HealthGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350EF5D62BCDC19D0036E1A8 /* HealthGoal.swift */; };
 		350EF5DA2BCDC1CE0036E1A8 /* WidgetPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350EF5D92BCDC1CE0036E1A8 /* WidgetPreviewView.swift */; };
 		350EF5DD2BCDC2430036E1A8 /* GoalDetailViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350EF5DC2BCDC2430036E1A8 /* GoalDetailViewViewModel.swift */; };
+		353A34F42BCFC23B00BE01D4 /* WidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353A34F32BCFC23B00BE01D4 /* WidgetData.swift */; };
+		353A34F82BCFC30F00BE01D4 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353A34F72BCFC30F00BE01D4 /* Color.swift */; };
+		353A34FB2BCFC7B900BE01D4 /* CircleGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353A34FA2BCFC7B900BE01D4 /* CircleGraphView.swift */; };
+		353A34FD2BCFC85B00BE01D4 /* LineChartGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353A34FC2BCFC85B00BE01D4 /* LineChartGraphView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		350EF5D62BCDC19D0036E1A8 /* HealthGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthGoal.swift; sourceTree = "<group>"; };
 		350EF5D92BCDC1CE0036E1A8 /* WidgetPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetPreviewView.swift; sourceTree = "<group>"; };
 		350EF5DC2BCDC2430036E1A8 /* GoalDetailViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetailViewViewModel.swift; sourceTree = "<group>"; };
+		353A34F32BCFC23B00BE01D4 /* WidgetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetData.swift; sourceTree = "<group>"; };
+		353A34F72BCFC30F00BE01D4 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		353A34FA2BCFC7B900BE01D4 /* CircleGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleGraphView.swift; sourceTree = "<group>"; };
+		353A34FC2BCFC85B00BE01D4 /* LineChartGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartGraphView.swift; sourceTree = "<group>"; };
 		358B9FBE2BCDC78500752687 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,6 +112,7 @@
 		350EF5D02BCDC12B0036E1A8 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				353A34F62BCFC30000BE01D4 /* Extenions */,
 				350EF5D42BCDC1830036E1A8 /* FileManager.swift */,
 			);
 			path = Utils;
@@ -112,6 +121,7 @@
 		350EF5D12BCDC1310036E1A8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				353A34F32BCFC23B00BE01D4 /* WidgetData.swift */,
 				350EF5D62BCDC19D0036E1A8 /* HealthGoal.swift */,
 			);
 			path = Models;
@@ -121,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				350EF5D92BCDC1CE0036E1A8 /* WidgetPreviewView.swift */,
+				353A34F92BCFC7A200BE01D4 /* Components */,
 			);
 			path = WidgetPreviewView;
 			sourceTree = "<group>";
@@ -132,6 +143,23 @@
 				350EF5DC2BCDC2430036E1A8 /* GoalDetailViewViewModel.swift */,
 			);
 			path = GoalDetailView;
+			sourceTree = "<group>";
+		};
+		353A34F62BCFC30000BE01D4 /* Extenions */ = {
+			isa = PBXGroup;
+			children = (
+				353A34F72BCFC30F00BE01D4 /* Color.swift */,
+			);
+			path = Extenions;
+			sourceTree = "<group>";
+		};
+		353A34F92BCFC7A200BE01D4 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				353A34FA2BCFC7B900BE01D4 /* CircleGraphView.swift */,
+				353A34FC2BCFC85B00BE01D4 /* LineChartGraphView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,12 +233,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				350EF5D72BCDC19D0036E1A8 /* HealthGoal.swift in Sources */,
+				353A34F42BCFC23B00BE01D4 /* WidgetData.swift in Sources */,
 				350EF5DA2BCDC1CE0036E1A8 /* WidgetPreviewView.swift in Sources */,
 				350EF5C22BCDC0A60036E1A8 /* ContentView.swift in Sources */,
 				350EF5C02BCDC0A60036E1A8 /* HealthPulseApp.swift in Sources */,
 				350EF5DD2BCDC2430036E1A8 /* GoalDetailViewViewModel.swift in Sources */,
 				350EF5D32BCDC1610036E1A8 /* HealthDataManager.swift in Sources */,
+				353A34F82BCFC30F00BE01D4 /* Color.swift in Sources */,
 				350EF5D52BCDC1830036E1A8 /* FileManager.swift in Sources */,
+				353A34FB2BCFC7B900BE01D4 /* CircleGraphView.swift in Sources */,
+				353A34FD2BCFC85B00BE01D4 /* LineChartGraphView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,9 +14,12 @@ class GoalDetailViewViewModel: ObservableObject {
 
     @Published var healthGoals: [HealthGoal]
     @Published var selectedHealthGoal: HealthGoal
-    
-    let healthGoalsPath = FileManager.documentsDirectory.appendingPathComponent("HealthGoals")
+    @Published var numberString: String = ""
+    @Published var selectedUnit: UnitSelection = .miles // Default selection
 
+    let healthGoalsPath = FileManager.documentsDirectory.appendingPathComponent("HealthGoals")
+    
+    
     init(healthDataManager: HealthDataManager = HealthDataManager()) {
         self.healthDataManager = healthDataManager
         self.healthGoals = []
