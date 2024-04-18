@@ -16,6 +16,7 @@ struct HealthGoal: Identifiable, Codable, Equatable {
     var endDate: Date
     var doneUnits: Double
     var goalUnits: Double
+    var unitSelection: UnitSelection
     var actualProgress: Double
     var expectedProgress: Double
     var expectedUnits: Double
@@ -25,7 +26,7 @@ struct HealthGoal: Identifiable, Codable, Equatable {
     var colorSet: WidgetColorSet
     
     func updateCompletion() -> HealthGoal {
-        return HealthGoal(id: id, title: title, goalType: goalType, startDate: startDate, endDate: endDate, doneUnits: doneUnits, goalUnits: goalUnits, actualProgress: actualProgress, expectedProgress: expectedProgress, expectedUnits: expectedUnits, data: data, graphType: .circle, colorSet: .black)
+        return HealthGoal(id: id, title: title, goalType: goalType, startDate: startDate, endDate: endDate, doneUnits: doneUnits, goalUnits: goalUnits, unitSelection: unitSelection, actualProgress: actualProgress, expectedProgress: expectedProgress, expectedUnits: expectedUnits, data: data, graphType: .circle, colorSet: .black)
     }
 }
 
@@ -45,7 +46,7 @@ enum GraphType: Codable {
     case lineChart
 }
 
-enum UnitSelection {
+enum UnitSelection: Codable {
   case miles
   case kilometers
 }
@@ -65,6 +66,7 @@ let sampleHealthGoal = HealthGoal(
     endDate: Date().addingTimeInterval(86400 * 7),     // End date 7 days from now
     doneUnits: 30.8,
     goalUnits: 50.0,
+    unitSelection: .kilometers,
     actualProgress: 0.308,
     expectedProgress: 0.3,
     expectedUnits: 30.0,

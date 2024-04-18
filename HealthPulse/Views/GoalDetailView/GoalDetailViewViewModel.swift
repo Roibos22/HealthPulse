@@ -23,12 +23,12 @@ class GoalDetailViewViewModel: ObservableObject {
     init(healthDataManager: HealthDataManager = HealthDataManager()) {
         self.healthDataManager = healthDataManager
         self.healthGoals = []
-        self.selectedHealthGoal = HealthGoal(title: "Goal", goalType: .running, startDate: Date(), endDate: Date(), doneUnits: 0, goalUnits: 0, actualProgress: 0, expectedProgress: 0, expectedUnits: 0, data: [], graphType: .circle, colorSet: .black)
+        self.selectedHealthGoal = HealthGoal(title: "Goal", goalType: .running, startDate: Date(), endDate: Date(), doneUnits: 0, goalUnits: 0, unitSelection: .kilometers, actualProgress: 0, expectedProgress: 0, expectedUnits: 0, data: [], graphType: .circle, colorSet: .black)
         loadHealthGoals()
     }
     
     func loadHealthGoals() {
-        let defaultGoal = HealthGoal(title: "Goal", goalType: .running, startDate: Date(), endDate: Date(), doneUnits: 0, goalUnits: 0, actualProgress: 0, expectedProgress: 0, expectedUnits: 0, data: [], graphType: .circle, colorSet: .black)
+        let defaultGoal = HealthGoal(title: "Goal", goalType: .running, startDate: Date(), endDate: Date(), doneUnits: 0, goalUnits: 0, unitSelection: .kilometers, actualProgress: 0, expectedProgress: 0, expectedUnits: 0, data: [], graphType: .circle, colorSet: .black)
         do {
             let data = try Data(contentsOf: healthGoalsPath)
             healthGoals = try JSONDecoder().decode([HealthGoal].self, from: data)

@@ -74,11 +74,12 @@ struct GoalSetupView: View {
                 
                 // GOAL UNITS SELECTOR
                 HStack {
-                    Picker("Unit", selection: $vm.selectedUnit) {
+                    Picker("Unit", selection: $vm.selectedHealthGoal.unitSelection) {
                         Text("mi").tag(UnitSelection.miles)
                         Text("km").tag(UnitSelection.kilometers)
                     }
                     .pickerStyle(.segmented)
+                    .onChange(of: vm.selectedHealthGoal.unitSelection) { _ in vm.updateData() }
                     .frame(width: 120)
                 }
                 Spacer()
