@@ -24,7 +24,7 @@ struct GoalDetailView: View {
                 }
                 .ignoresSafeArea()
                 .padding(.vertical, 20)
-                .padding(.horizontal, 20)
+                .padding(.horizontal, 30)
             }
             .navigationTitle("Your Running Goal")
             .toolbar {
@@ -42,8 +42,18 @@ struct GoalDetailView: View {
                 .padding()
         }
         .onAppear {
-            vm.numberString = String(vm.selectedHealthGoal.goalUnits)
+            vm.numberString = vm.selectedHealthGoal.goalUnits.trimmedString()
         }
+    }
+}
+
+extension Double {
+    func trimmedString() -> String {
+        let formatter = NumberFormatter()
+        formatter.minimumFractionDigits = 0
+        formatter.maximumFractionDigits = Int.max // Set to maximum to allow all fractional digits
+        formatter.numberStyle = .decimal
+        return formatter.string(from: NSNumber(value: self)) ?? ""
     }
 }
 
@@ -54,15 +64,13 @@ struct GoalSetupView: View {
     var body: some View {
         VStack {
             HStack {
-                Spacer()
-                
                 // ENTER GOAL UNITS TEXTFIELD
                 HStack{
                     TextField("Enter Goal", text: $vm.numberString)
                         .keyboardType(.decimalPad)
                         .focused($focusItem)
-                        .frame(width: 120)
-                        .padding(5)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 5)
                         .background(
                             RoundedRectangle(cornerRadius: 8)
                                 .fill(Color.gray.opacity(0.2))
@@ -79,14 +87,11 @@ struct GoalSetupView: View {
                     }
                     .pickerStyle(.segmented)
                     .onChange(of: vm.selectedHealthGoal.unitSelection) { _ in vm.updateData() }
-                    .frame(width: 120)
                 }
-                Spacer()
             }
             .padding(.bottom, 10)
 
             HStack(alignment: .center) {
-                Spacer()
                 
                 // START DATE PICKER
                 ZStack {
@@ -98,6 +103,8 @@ struct GoalSetupView: View {
                         .labelsHidden()
                 }
                 Spacer()
+                Image(systemName: "arrow.right")
+                Spacer()
                 
                 // END DATE PICKER
                 ZStack {
@@ -108,9 +115,8 @@ struct GoalSetupView: View {
                         .onChange(of: vm.selectedHealthGoal.endDate) { _ in vm.updateData() }
                         .labelsHidden()
                 }
-                Spacer()
             }
-            .frame(maxWidth: .infinity)
+            //.frame(maxWidth: .infinity)
         }
         .toolbar {
             ToolbarItem(placement: .keyboard) {
