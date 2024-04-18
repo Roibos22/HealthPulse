@@ -33,10 +33,10 @@ class GoalDetailViewViewModel: ObservableObject {
             let data = try Data(contentsOf: healthGoalsPath)
             healthGoals = try JSONDecoder().decode([HealthGoal].self, from: data)
         } catch {
-
             addData(healtGoal: defaultGoal)
         }
         selectedHealthGoal = healthGoals.first(where: { $0.goalType == .running }) ?? defaultGoal
+        print(selectedHealthGoal.colorSet)
         updateData()
     }
     
@@ -45,6 +45,7 @@ class GoalDetailViewViewModel: ObservableObject {
             let data = try JSONEncoder().encode(healthGoals)
             try data.write(to: healthGoalsPath, options: [.atomicWrite, .completeFileProtection])
             print("Data saved.")
+            print(selectedHealthGoal.colorSet)
         } catch {
             print("Unable to save data.")
             print(error)

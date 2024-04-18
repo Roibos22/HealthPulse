@@ -26,7 +26,7 @@ struct HealthGoal: Identifiable, Codable, Equatable {
     var colorSet: WidgetColorSet
     
     func updateCompletion() -> HealthGoal {
-        return HealthGoal(id: id, title: title, goalType: goalType, startDate: startDate, endDate: endDate, doneUnits: doneUnits, goalUnits: goalUnits, unitSelection: unitSelection, actualProgress: actualProgress, expectedProgress: expectedProgress, expectedUnits: expectedUnits, data: data, graphType: .circle, colorSet: .black)
+        return HealthGoal(id: id, title: title, goalType: goalType, startDate: startDate, endDate: endDate, doneUnits: doneUnits, goalUnits: goalUnits, unitSelection: unitSelection, actualProgress: actualProgress, expectedProgress: expectedProgress, expectedUnits: expectedUnits, data: data, graphType: graphType, colorSet: colorSet)
     }
 }
 

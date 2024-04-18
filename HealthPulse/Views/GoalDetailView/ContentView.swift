@@ -37,7 +37,6 @@ struct GoalDetailView: View {
                 }
             }
         }
-        
         .sheet(isPresented: $showMenuSheet) {
               SettingsView()
                 .padding()
@@ -141,6 +140,7 @@ struct WidgetSetupView: View {
                     Text("Circle").tag(GraphType.circle)
                 }
                 .pickerStyle(.segmented)
+                .onChange(of: vm.selectedHealthGoal.graphType) { _ in vm.updateData() }
                 .frame(width: 200)
             }
             .padding(.vertical)
@@ -167,6 +167,7 @@ struct WidgetSetupView: View {
                             withAnimation {
                                 vm.selectedHealthGoal.colorSet = set
                             }
+                            vm.updateData()
                         }
                 }
             }
