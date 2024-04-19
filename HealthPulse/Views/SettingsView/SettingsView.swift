@@ -8,20 +8,23 @@
 import SwiftUI
 
 struct SettingsView: View {
-    
+    @Environment(\.dismiss) private var dismiss
+
     let websiteURL = URL(string: "https://www.doomsdaymethod.com")!
     
     var body: some View {
-        ZStack {
+        
+        NavigationView {
+            ZStack {
                 
                 List {
-
+                    
                     // Contact Section
                     Section {
                         HStack {
                             Link("Visit our website", destination: websiteURL)
                                 .multilineTextAlignment(.leading)
-                                //.foregroundColor(Color(.black))
+                            //.foregroundColor(Color(.black))
                             Spacer()
                             Image(systemName: "chevron.right")
                                 .foregroundColor(.blue)
@@ -83,6 +86,19 @@ struct SettingsView: View {
                 }
                 .listStyle(InsetGroupedListStyle())
                 .scrollContentBackground(.hidden)
+                .navigationTitle("Menu")
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button {
+                            dismiss()
+                        } label: {
+                            Image(systemName: "xmark")
+                        }
+                    }
+                }
+            
+                
+            }
         }
     }
 }
