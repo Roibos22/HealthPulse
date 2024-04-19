@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-struct SettingsView: View {
+struct MenuView: View {
     @Environment(\.dismiss) private var dismiss
 
     let websiteURL = URL(string: "https://www.doomsdaymethod.com")!
+    @State private var appleHealthAllowed: Bool = false
     
     var body: some View {
         
@@ -19,23 +20,42 @@ struct SettingsView: View {
                 
                 List {
                     
+                    Section {
+                        HStack {
+                            Toggle(appleHealthAllowed ? "Disable Apple Health" : "Enable Apple Health",
+                                   isOn: $appleHealthAllowed)
+                            
+                        }
+                    } header: {
+                        Text("Settings")
+                    }
+                    .bold()
+                    .foregroundColor(Color(.label))
+                    .listRowBackground(Color(.systemGray5))
+                    
                     // Contact Section
                     Section {
                         HStack {
                             Link("Visit our website", destination: websiteURL)
                                 .multilineTextAlignment(.leading)
-                            //.foregroundColor(Color(.black))
                             Spacer()
                             Image(systemName: "chevron.right")
                                 .foregroundColor(.blue)
                         }
                         
+                        HStack {
+                            Link("Send Feedback", destination: websiteURL)
+                                .multilineTextAlignment(.leading)
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .foregroundColor(.blue)
+                        }
                         
                         Button {
                             //rateApp()
                         } label: {
                             HStack {
-                                Text("Rate the Doomsday Method")
+                                Text("Rate HealthPulse")
                                     .multilineTextAlignment(.leading)
                                 Spacer()
                                 Image(systemName: "chevron.right")
@@ -49,15 +69,10 @@ struct SettingsView: View {
                                 LegalNoticeView()
                             } label: {
                                 Text("Legal Notice")
-                                    .opacity(1)
-                                    .foregroundColor(.blue)
                             }
                             HStack {
                                 Spacer()
                                 Image(systemName: "chevron.right")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 10)
                                     .foregroundColor(.blue)
                             }
                         }
@@ -82,6 +97,7 @@ struct SettingsView: View {
                         Text("Contact")
                     }
                     .bold()
+                    .foregroundColor(Color(.label))
                     .listRowBackground(Color(.systemGray5))
                     
                 }
@@ -105,5 +121,5 @@ struct SettingsView: View {
 }
 
 #Preview {
-    SettingsView()
+    MenuView()
 }

@@ -38,7 +38,7 @@ struct GoalDetailView: View {
             }
         }
         .sheet(isPresented: $showMenuSheet) {
-              SettingsView()
+              MenuView()
                 .padding()
         }
         .onAppear {
