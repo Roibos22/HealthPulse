@@ -46,10 +46,11 @@ struct SettingsView: View {
                         
                         ZStack {
                             NavigationLink {
-                                //LegalNotice()
+                                LegalNoticeView()
                             } label: {
                                 Text("Legal Notice")
                                     .opacity(1)
+                                    .foregroundColor(.blue)
                             }
                             HStack {
                                 Spacer()

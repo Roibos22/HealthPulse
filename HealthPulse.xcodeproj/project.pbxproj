@@ -21,6 +21,7 @@
 		353A34FB2BCFC7B900BE01D4 /* CircleGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353A34FA2BCFC7B900BE01D4 /* CircleGraphView.swift */; };
 		353A34FD2BCFC85B00BE01D4 /* LineChartGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353A34FC2BCFC85B00BE01D4 /* LineChartGraphView.swift */; };
 		3578E3CB2BD065CB00F3AD2C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3578E3CA2BD065CB00F3AD2C /* SettingsView.swift */; };
+		35B60B9F2BD2A3B700B2FE13 /* LegalNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B60B9E2BD2A3B700B2FE13 /* LegalNoticeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		353A34FC2BCFC85B00BE01D4 /* LineChartGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartGraphView.swift; sourceTree = "<group>"; };
 		3578E3CA2BD065CB00F3AD2C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		358B9FBE2BCDC78500752687 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		35B60B9E2BD2A3B700B2FE13 /* LegalNoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalNoticeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				3578E3CA2BD065CB00F3AD2C /* SettingsView.swift */,
+				35B60B9E2BD2A3B700B2FE13 /* LegalNoticeView.swift */,
 			);
 			path = SettingsView;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 			files = (
 				350EF5D72BCDC19D0036E1A8 /* HealthGoal.swift in Sources */,
 				353A34F42BCFC23B00BE01D4 /* WidgetData.swift in Sources */,
+				35B60B9F2BD2A3B700B2FE13 /* LegalNoticeView.swift in Sources */,
 				350EF5DA2BCDC1CE0036E1A8 /* WidgetPreviewView.swift in Sources */,
 				350EF5C22BCDC0A60036E1A8 /* ContentView.swift in Sources */,
 				350EF5C02BCDC0A60036E1A8 /* HealthPulseApp.swift in Sources */,
