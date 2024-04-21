@@ -16,9 +16,10 @@ class GoalDetailViewViewModel: ObservableObject {
     @Published var selectedHealthGoal: HealthGoal
     @Published var numberString: String = ""
     @Published var selectedUnit: UnitSelection = .miles // Default selection
+    @Published var showGoalMissing: Bool = true
+    @Published var showMenuSheet: Bool = false
 
     let healthGoalsPath = FileManager.documentsDirectory.appendingPathComponent("HealthGoals")
-    
     
     init(healthDataManager: HealthDataManager = HealthDataManager()) {
         self.healthDataManager = healthDataManager
@@ -64,7 +65,16 @@ class GoalDetailViewViewModel: ObservableObject {
             print("Error while updating")
         }
         save()
+        updateGoalMissingView()
         updateHealthGoals()
+    }
+    
+    func updateGoalMissingView() {
+        if selectedHealthGoal.goalUnits == 0.0 {
+            showGoalMissing = true
+        } else {
+            showGoalMissing = false
+        }
     }
     
     //

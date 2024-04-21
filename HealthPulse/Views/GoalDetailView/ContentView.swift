@@ -12,15 +12,19 @@ struct GoalDetailView: View {
     @EnvironmentObject var manager: HealthDataManager
     @ObservedObject var vm: GoalDetailViewViewModel
     
-    @State private var showMenuSheet = false
+    
     
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack {
                     GoalSetupView(vm: vm)
-                    WidgetPreView(healthGoal: vm.selectedHealthGoal)
-                    WidgetSetupView(vm: vm)
+                    if (vm.showGoalMissing) {
+                        goalMissingView
+                    } else {
+                        WidgetPreView(healthGoal: vm.selectedHealthGoal)
+                        WidgetSetupView(vm: vm)
+                    }
                 }
                 .ignoresSafeArea()
                 .padding(.vertical, 20)
@@ -30,19 +34,38 @@ struct GoalDetailView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
-                        showMenuSheet.toggle()
+                        vm.showMenuSheet.toggle()
                     } label: {
                         Image(systemName: "list.bullet")
                     }
                 }
             }
         }
-        .sheet(isPresented: $showMenuSheet) {
+        .sheet(isPresented: $vm.showMenuSheet) {
               MenuView()
                 .padding()
         }
         .onAppear {
             vm.numberString = vm.selectedHealthGoal.goalUnits.trimmedString()
+        }
+    }
+}
+
+extension GoalDetailView {
+    var goalMissingView: some View {
+        ZStack {
+            Circle()
+                .frame(width: 200)
+                .opacity(0.2)
+            VStack(alignment: .center) {
+                Image(systemName: "calendar.badge.plus")
+                    .font(.largeTitle)
+                Text("Please enter goal information")
+                    .multilineTextAlignment(.center)
+                    .bold()
+                    .padding(5)
+            }
+            .frame(width: 200)
         }
     }
 }
