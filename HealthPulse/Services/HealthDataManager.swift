@@ -35,7 +35,7 @@ class HealthDataManager: ObservableObject {
         }
     }
     
-    func fetchRunningDistance(startDate: Date, endDate: Date, completion: @escaping (Double, Error?) -> Void) {
+    func fetchRunningDistanceKm(startDate: Date, endDate: Date, completion: @escaping (Double, Error?) -> Void) {
         let runningPredicate = HKQuery.predicateForWorkouts(with: .running)
         let timePredicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate)
         let predicates = NSCompoundPredicate(andPredicateWithSubpredicates: [timePredicate, runningPredicate])
@@ -47,6 +47,24 @@ class HealthDataManager: ObservableObject {
             }
             let totalDistance = workouts.reduce(0.0) { sum, workout in
                 return sum + (workout.totalDistance?.doubleValue(for: HKUnit.meterUnit(with: .kilo)) ?? 0)
+            }
+            completion(totalDistance, nil)
+        }
+        healthStore.execute(query)
+    }
+    
+    func fetchRunningDistanceMi(startDate: Date, endDate: Date, completion: @escaping (Double, Error?) -> Void) {
+        let runningPredicate = HKQuery.predicateForWorkouts(with: .running)
+        let timePredicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate)
+        let predicates = NSCompoundPredicate(andPredicateWithSubpredicates: [timePredicate, runningPredicate])
+        
+        let query = HKSampleQuery(sampleType: HKObjectType.workoutType(), predicate: predicates, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { _, results, error in
+            guard let workouts = results as? [HKWorkout], error == nil else {
+                completion(0, error)
+                return
+            }
+            let totalDistance = workouts.reduce(0.0) { sum, workout in
+                return sum + (workout.totalDistance?.doubleValue(for: HKUnit.mile()) ?? 0)
             }
             completion(totalDistance, nil)
         }

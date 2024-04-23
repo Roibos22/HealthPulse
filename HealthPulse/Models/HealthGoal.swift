@@ -47,8 +47,16 @@ enum GraphType: Codable {
 }
 
 enum UnitSelection: Codable {
-  case miles
-  case kilometers
+    case miles
+    case kilometers
+    
+    var abbreviation: String {
+        switch self {
+        case .kilometers: return "km"
+        case .miles: return "mi"
+        }
+    }
+    
 }
 
 let sampleDataPoints: [HealthDataPoint] = [

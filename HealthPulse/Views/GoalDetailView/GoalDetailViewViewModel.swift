@@ -15,7 +15,6 @@ class GoalDetailViewViewModel: ObservableObject {
     @Published var healthGoals: [HealthGoal]
     @Published var selectedHealthGoal: HealthGoal
     @Published var numberString: String = ""
-    @Published var selectedUnit: UnitSelection = .miles // Default selection
     @Published var showGoalMissing: Bool = true
     @Published var showMenuSheet: Bool = false
 
@@ -98,12 +97,24 @@ class GoalDetailViewViewModel: ObservableObject {
     }
     
     func fetchDistance() {
-        healthDataManager.fetchRunningDistance(startDate: selectedHealthGoal.startDate, endDate: selectedHealthGoal.endDate) { [weak self] distance, error in
-            DispatchQueue.main.async {
-                if let error = error {
-                    print("Error fetching distance: \(error.localizedDescription)")
-                } else {
-                    self?.selectedHealthGoal.doneUnits = distance
+        if selectedHealthGoal.unitSelection == .kilometers {
+            healthDataManager.fetchRunningDistanceKm(startDate: selectedHealthGoal.startDate, endDate: selectedHealthGoal.endDate) { [weak self] distance, error in
+                DispatchQueue.main.async {
+                    if let error = error {
+                        print("Error fetching distance: \(error.localizedDescription)")
+                    } else {
+                        self?.selectedHealthGoal.doneUnits = distance
+                    }
+                }
+            }
+        } else if selectedHealthGoal.unitSelection == .miles {
+            healthDataManager.fetchRunningDistanceMi(startDate: selectedHealthGoal.startDate, endDate: selectedHealthGoal.endDate) { [weak self] distance, error in
+                DispatchQueue.main.async {
+                    if let error = error {
+                        print("Error fetching distance: \(error.localizedDescription)")
+                    } else {
+                        self?.selectedHealthGoal.doneUnits = distance
+                    }
                 }
             }
         }

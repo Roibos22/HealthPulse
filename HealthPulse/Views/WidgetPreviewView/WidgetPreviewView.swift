@@ -47,15 +47,15 @@ struct WidgetPreView: View {
                     HStack {
                         Image(systemName: "figure.run")
                             .font(.title)
-                        Text(String(format: "%.0f km", healthGoal.goalUnits))
+                        Text(String(format: "%.0f \(healthGoal.unitSelection.abbreviation)", healthGoal.goalUnits))
                             .bold()
                         Spacer()
                     }
                     Spacer()
                     HStack {
-                        Text(String(format: "%.1f km", healthGoal.doneUnits))
+                        Text(String(format: "%.1f \(healthGoal.unitSelection.abbreviation)", healthGoal.doneUnits))
                         Spacer()
-                        Text(String(format: "%.1f km", differenceToExpected))
+                        Text(String(format: "%.1f \(healthGoal.unitSelection.abbreviation)", differenceToExpected))
                             .foregroundColor(betterThanExpected ? healthGoal.colorSet.positive : healthGoal.colorSet.negative)
                     }
                     .font(.subheadline)
