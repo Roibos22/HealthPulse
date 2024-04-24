@@ -81,16 +81,16 @@ class GoalDetailViewViewModel: ObservableObject {
     func updateHealthGoals() {
         fetchWorkouts()
         fetchDistance()
-        calculateHealthGoalStatistics()
     }
     
     func fetchWorkouts() {
-        healthDataManager.fetchWorkouts(startDate: selectedHealthGoal.startDate, endDate: selectedHealthGoal.endDate) { [weak self] workuts, error in
+        healthDataManager.fetchWorkouts(startDate: selectedHealthGoal.startDate, endDate: selectedHealthGoal.endDate) { [weak self] workouts, error in
             DispatchQueue.main.async {
                 if let error = error {
                     print("Error fetching workouts: \(error.localizedDescription)")
                 } else {
-                    self?.selectedHealthGoal.data = workuts
+                    self?.selectedHealthGoal.data = workouts
+                    self?.calculateHealthGoalStatistics()
                 }
             }
         }
@@ -104,6 +104,7 @@ class GoalDetailViewViewModel: ObservableObject {
                         print("Error fetching distance: \(error.localizedDescription)")
                     } else {
                         self?.selectedHealthGoal.doneUnits = distance
+                        self?.calculateHealthGoalStatistics()
                     }
                 }
             }
@@ -114,6 +115,7 @@ class GoalDetailViewViewModel: ObservableObject {
                         print("Error fetching distance: \(error.localizedDescription)")
                     } else {
                         self?.selectedHealthGoal.doneUnits = distance
+                        self?.calculateHealthGoalStatistics()
                     }
                 }
             }
