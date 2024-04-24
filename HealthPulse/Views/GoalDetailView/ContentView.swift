@@ -12,8 +12,6 @@ struct GoalDetailView: View {
     @EnvironmentObject var manager: HealthDataManager
     @ObservedObject var vm: GoalDetailViewViewModel
     
-    
-    
     var body: some View {
         NavigationView {
             ScrollView {
@@ -70,15 +68,6 @@ extension GoalDetailView {
     }
 }
 
-extension Double {
-    func trimmedString() -> String {
-        let formatter = NumberFormatter()
-        formatter.minimumFractionDigits = 0
-        formatter.maximumFractionDigits = Int.max // Set to maximum to allow all fractional digits
-        formatter.numberStyle = .decimal
-        return formatter.string(from: NSNumber(value: self)) ?? ""
-    }
-}
 
 struct GoalSetupView: View {
     @ObservedObject var vm: GoalDetailViewViewModel
@@ -90,7 +79,7 @@ struct GoalSetupView: View {
                 // ENTER GOAL UNITS TEXTFIELD
                 HStack{
                     TextField("Enter Goal", text: $vm.numberString)
-                        .keyboardType(.decimalPad)
+                        .keyboardType(.numberPad)
                         .focused($focusItem)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 5)
