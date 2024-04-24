@@ -10,34 +10,7 @@ import Charts
 
 struct LineChartGraphView: View {
     let healthGoal: HealthGoal
-    
-    // if today >= 75% of goal range
-        // -> xscale = goal.endDate
-    // else
-        // -> scale = passedTime * 1.5
-    
-    var scaleEnd: Date!
-    var scaleEndExpectedUnits: Double!
 
-    init(healthGoal: HealthGoal) {
-        self.healthGoal = healthGoal
-        
-        let passedTime: TimeInterval = Date().timeIntervalSince(healthGoal.startDate)
-        let goalInterval: TimeInterval = healthGoal.endDate.timeIntervalSince(healthGoal.startDate)
-        
-        if passedTime < 0.75 * goalInterval {
-            scaleEnd = healthGoal.startDate + (passedTime * 1.2) // Add time to start date
-        } else {
-            scaleEnd = healthGoal.endDate
-        }
-        
-        let unitsPerDay: Double = healthGoal.goalUnits / goalInterval
-        scaleEndExpectedUnits = (scaleEnd?.timeIntervalSince(healthGoal.startDate) ?? 0.0) * unitsPerDay
-        
-        print(scaleEndExpectedUnits)
-    }
-    
-    
     var body: some View {
         
         VStack {
@@ -49,8 +22,8 @@ struct LineChartGraphView: View {
                     )
                     .interpolationMethod(.monotone)
                 }
-                .chartXScale(domain: healthGoal.startDate ... scaleEnd)
-                .chartYScale(domain: 0 ... scaleEndExpectedUnits)
+                .chartXScale(domain: healthGoal.startDate ... healthGoal.endDate)
+                .chartYScale(domain: 0 ... healthGoal.goalUnits)
                 .foregroundColor(.green)
                 
                 Chart(healthGoal.data) { dataPoint in
@@ -67,8 +40,8 @@ struct LineChartGraphView: View {
                         )
                     )
                 }
-                .chartXScale(domain: healthGoal.startDate ... scaleEnd)
-                .chartYScale(domain: 0 ... scaleEndExpectedUnits)
+                .chartXScale(domain: healthGoal.startDate ... healthGoal.endDate)
+                .chartYScale(domain: 0 ... healthGoal.goalUnits)
 
                 Chart() {
                     LineMark(
@@ -76,13 +49,13 @@ struct LineChartGraphView: View {
                         y: .value("Units", 0.0)
                     )
                     LineMark(
-                        x: .value("Date", scaleEnd),
-                        y: .value("Units", scaleEndExpectedUnits)
+                        x: .value("Date", healthGoal.endDate),
+                        y: .value("Units", healthGoal.goalUnits)
                     )
                     
                 }
-                .chartXScale(domain: healthGoal.startDate ... scaleEnd)
-                .chartYScale(domain: 0 ... scaleEndExpectedUnits)
+                .chartXScale(domain: healthGoal.startDate ... healthGoal.endDate)
+                .chartYScale(domain: 0 ... healthGoal.goalUnits)
                 .foregroundColor(.gray).opacity(0.5)
 
             }
