@@ -50,15 +50,10 @@ struct HealthGoalWidgetEntryView : View {
     var entry: HealthGoalEntry
 
     var body: some View {
-        ZStack {
-//            ContainerRelativeShape()
-//                .fill(sampleHealthGoal.colorSet.background)
-            VStack {
-                WidgetPreView(healthGoal: sampleHealthGoal)
-                    .frame(maxWidth: .infinity)
-            }
+        VStack {
+            WidgetPreView(healthGoal: entry.healthGoal)
         }
-
+        .containerBackground(entry.healthGoal.colorSet.background, for: .widget)
     }
 }
 
@@ -69,7 +64,7 @@ struct HealthGoalWidget: Widget {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             if #available(iOS 17.0, *) {
                 HealthGoalWidgetEntryView(entry: entry)
-                    .containerBackground(.fill, for: .widget)
+                    //.containerBackground(.fill, for: .widget)
             } else {
                 HealthGoalWidgetEntryView(entry: entry)
                     .padding()
@@ -78,12 +73,14 @@ struct HealthGoalWidget: Widget {
         }
         .configurationDisplayName("My Widget")
         .description("This is an example widget.")
+        //.supportedFamilies([.systemSmall])
     }
 }
 
-//#Preview(as: .systemSmall) {
-//    HealthGoalWidget()
-//} timeline: {
-//    HealthGoalEntry(date: .now, emoji: "😀", healthGoal: sampleHealthGoal)
-//    HealthGoalEntry(date: .now, emoji: "🤩", healthGoal: sampleHealthGoal)
-//}
+#Preview(as: .systemSmall) {
+    HealthGoalWidget()
+} timeline: {
+    HealthGoalEntry(date: .now, emoji: "😀", healthGoal: sampleHealthGoal)
+    HealthGoalEntry(date: .now, emoji: "🤩", healthGoal: sampleHealthGoal)
+}
+

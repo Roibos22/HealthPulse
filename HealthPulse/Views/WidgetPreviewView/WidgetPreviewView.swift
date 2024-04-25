@@ -26,10 +26,7 @@ struct WidgetPreView: View {
     
     var body: some View {
         VStack {
-//            Text("Widget Preview")
-//                .font(.title2)
-//                .bold()
-//            
+
             ZStack {
                 Spacer()
                 VStack {
