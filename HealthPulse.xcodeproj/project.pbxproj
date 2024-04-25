@@ -13,7 +13,6 @@
 		350EF5C82BCDC0A80036E1A8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 350EF5C72BCDC0A80036E1A8 /* Preview Assets.xcassets */; };
 		350EF5D32BCDC1610036E1A8 /* HealthDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350EF5D22BCDC1610036E1A8 /* HealthDataManager.swift */; };
 		350EF5D52BCDC1830036E1A8 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350EF5D42BCDC1830036E1A8 /* FileManager.swift */; };
-		350EF5D72BCDC19D0036E1A8 /* HealthGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350EF5D62BCDC19D0036E1A8 /* HealthGoal.swift */; };
 		350EF5DA2BCDC1CE0036E1A8 /* WidgetPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350EF5D92BCDC1CE0036E1A8 /* WidgetPreviewView.swift */; };
 		350EF5DD2BCDC2430036E1A8 /* GoalDetailViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350EF5DC2BCDC2430036E1A8 /* GoalDetailViewViewModel.swift */; };
 		353459452BD9115A00C37C0C /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353459442BD9115A00C37C0C /* Double.swift */; };
@@ -23,7 +22,47 @@
 		353A34FD2BCFC85B00BE01D4 /* LineChartGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353A34FC2BCFC85B00BE01D4 /* LineChartGraphView.swift */; };
 		3578E3CB2BD065CB00F3AD2C /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3578E3CA2BD065CB00F3AD2C /* MenuView.swift */; };
 		35B60B9F2BD2A3B700B2FE13 /* LegalNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B60B9E2BD2A3B700B2FE13 /* LegalNoticeView.swift */; };
+		35DFAF112BDA48C600307152 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35DFAF102BDA48C600307152 /* WidgetKit.framework */; };
+		35DFAF132BDA48C600307152 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35DFAF122BDA48C600307152 /* SwiftUI.framework */; };
+		35DFAF162BDA48C600307152 /* HealthGoalWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DFAF152BDA48C600307152 /* HealthGoalWidgetBundle.swift */; };
+		35DFAF182BDA48C600307152 /* HealthGoalWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DFAF172BDA48C600307152 /* HealthGoalWidget.swift */; };
+		35DFAF1A2BDA48C800307152 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35DFAF192BDA48C800307152 /* Assets.xcassets */; };
+		35DFAF1E2BDA48C800307152 /* HealthGoalWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 35DFAF0E2BDA48C600307152 /* HealthGoalWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		35DFAF272BDA4BBA00307152 /* HealthGoalWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DFAF172BDA48C600307152 /* HealthGoalWidget.swift */; };
+		35DFAF292BDA4DBD00307152 /* HealthGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DFAF282BDA4DBD00307152 /* HealthGoal.swift */; };
+		35DFAF2C2BDA50B200307152 /* HealthGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DFAF282BDA4DBD00307152 /* HealthGoal.swift */; };
+		35DFAF2D2BDA50E100307152 /* WidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353A34F32BCFC23B00BE01D4 /* WidgetData.swift */; };
+		35DFAF2E2BDA510A00307152 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353A34F72BCFC30F00BE01D4 /* Color.swift */; };
+		35DFAF302BDA520200307152 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DFAF2F2BDA520200307152 /* UserDefaults.swift */; };
+		35DFAF312BDA521200307152 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DFAF2F2BDA520200307152 /* UserDefaults.swift */; };
+		35DFAF322BDA534500307152 /* WidgetPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350EF5D92BCDC1CE0036E1A8 /* WidgetPreviewView.swift */; };
+		35DFAF332BDA534900307152 /* CircleGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353A34FA2BCFC7B900BE01D4 /* CircleGraphView.swift */; };
+		35DFAF342BDA534C00307152 /* LineChartGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353A34FC2BCFC85B00BE01D4 /* LineChartGraphView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		35DFAF1C2BDA48C800307152 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 350EF5B42BCDC0A60036E1A8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 35DFAF0D2BDA48C600307152;
+			remoteInfo = HealthGoalWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		35DFAF1F2BDA48C800307152 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				35DFAF1E2BDA48C800307152 /* HealthGoalWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		350EF5BC2BCDC0A60036E1A8 /* HealthPulse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthPulse.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -34,7 +73,6 @@
 		350EF5C72BCDC0A80036E1A8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		350EF5D22BCDC1610036E1A8 /* HealthDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataManager.swift; sourceTree = "<group>"; };
 		350EF5D42BCDC1830036E1A8 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
-		350EF5D62BCDC19D0036E1A8 /* HealthGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthGoal.swift; sourceTree = "<group>"; };
 		350EF5D92BCDC1CE0036E1A8 /* WidgetPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetPreviewView.swift; sourceTree = "<group>"; };
 		350EF5DC2BCDC2430036E1A8 /* GoalDetailViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetailViewViewModel.swift; sourceTree = "<group>"; };
 		353459442BD9115A00C37C0C /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
@@ -45,6 +83,16 @@
 		3578E3CA2BD065CB00F3AD2C /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		358B9FBE2BCDC78500752687 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		35B60B9E2BD2A3B700B2FE13 /* LegalNoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalNoticeView.swift; sourceTree = "<group>"; };
+		35DFAF0E2BDA48C600307152 /* HealthGoalWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HealthGoalWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		35DFAF102BDA48C600307152 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		35DFAF122BDA48C600307152 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		35DFAF152BDA48C600307152 /* HealthGoalWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthGoalWidgetBundle.swift; sourceTree = "<group>"; };
+		35DFAF172BDA48C600307152 /* HealthGoalWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthGoalWidget.swift; sourceTree = "<group>"; };
+		35DFAF192BDA48C800307152 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		35DFAF1B2BDA48C800307152 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		35DFAF282BDA4DBD00307152 /* HealthGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HealthGoal.swift; path = ../../../../Downloads/HealthGoal.swift; sourceTree = "<group>"; };
+		35DFAF2A2BDA4EB600307152 /* HealthGoalWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HealthGoalWidgetExtension.entitlements; sourceTree = "<group>"; };
+		35DFAF2F2BDA520200307152 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,13 +103,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		35DFAF0B2BDA48C600307152 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35DFAF132BDA48C600307152 /* SwiftUI.framework in Frameworks */,
+				35DFAF112BDA48C600307152 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		350EF5B32BCDC0A60036E1A8 = {
 			isa = PBXGroup;
 			children = (
+				35DFAF2A2BDA4EB600307152 /* HealthGoalWidgetExtension.entitlements */,
 				350EF5BE2BCDC0A60036E1A8 /* HealthPulse */,
+				35DFAF142BDA48C600307152 /* HealthGoalWidget */,
+				35DFAF0F2BDA48C600307152 /* Frameworks */,
 				350EF5BD2BCDC0A60036E1A8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				350EF5BC2BCDC0A60036E1A8 /* HealthPulse.app */,
+				35DFAF0E2BDA48C600307152 /* HealthGoalWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,8 +189,8 @@
 		350EF5D12BCDC1310036E1A8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				35DFAF282BDA4DBD00307152 /* HealthGoal.swift */,
 				353A34F32BCFC23B00BE01D4 /* WidgetData.swift */,
-				350EF5D62BCDC19D0036E1A8 /* HealthGoal.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -157,6 +218,7 @@
 			children = (
 				353A34F72BCFC30F00BE01D4 /* Color.swift */,
 				353459442BD9115A00C37C0C /* Double.swift */,
+				35DFAF2F2BDA520200307152 /* UserDefaults.swift */,
 			);
 			path = Extenions;
 			sourceTree = "<group>";
@@ -179,6 +241,26 @@
 			path = SettingsView;
 			sourceTree = "<group>";
 		};
+		35DFAF0F2BDA48C600307152 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				35DFAF102BDA48C600307152 /* WidgetKit.framework */,
+				35DFAF122BDA48C600307152 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		35DFAF142BDA48C600307152 /* HealthGoalWidget */ = {
+			isa = PBXGroup;
+			children = (
+				35DFAF152BDA48C600307152 /* HealthGoalWidgetBundle.swift */,
+				35DFAF172BDA48C600307152 /* HealthGoalWidget.swift */,
+				35DFAF192BDA48C800307152 /* Assets.xcassets */,
+				35DFAF1B2BDA48C800307152 /* Info.plist */,
+			);
+			path = HealthGoalWidget;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -189,15 +271,34 @@
 				350EF5B82BCDC0A60036E1A8 /* Sources */,
 				350EF5B92BCDC0A60036E1A8 /* Frameworks */,
 				350EF5BA2BCDC0A60036E1A8 /* Resources */,
+				35DFAF1F2BDA48C800307152 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				35DFAF1D2BDA48C800307152 /* PBXTargetDependency */,
 			);
 			name = HealthPulse;
 			productName = HealthPulse;
 			productReference = 350EF5BC2BCDC0A60036E1A8 /* HealthPulse.app */;
 			productType = "com.apple.product-type.application";
+		};
+		35DFAF0D2BDA48C600307152 /* HealthGoalWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 35DFAF222BDA48C800307152 /* Build configuration list for PBXNativeTarget "HealthGoalWidgetExtension" */;
+			buildPhases = (
+				35DFAF0A2BDA48C600307152 /* Sources */,
+				35DFAF0B2BDA48C600307152 /* Frameworks */,
+				35DFAF0C2BDA48C600307152 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HealthGoalWidgetExtension;
+			productName = HealthGoalWidgetExtension;
+			productReference = 35DFAF0E2BDA48C600307152 /* HealthGoalWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -210,6 +311,9 @@
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					350EF5BB2BCDC0A60036E1A8 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					35DFAF0D2BDA48C600307152 = {
 						CreatedOnToolsVersion = 15.3;
 					};
 				};
@@ -228,6 +332,7 @@
 			projectRoot = "";
 			targets = (
 				350EF5BB2BCDC0A60036E1A8 /* HealthPulse */,
+				35DFAF0D2BDA48C600307152 /* HealthGoalWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -242,6 +347,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		35DFAF0C2BDA48C600307152 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35DFAF1A2BDA48C800307152 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -249,11 +362,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				350EF5D72BCDC19D0036E1A8 /* HealthGoal.swift in Sources */,
 				353A34F42BCFC23B00BE01D4 /* WidgetData.swift in Sources */,
 				35B60B9F2BD2A3B700B2FE13 /* LegalNoticeView.swift in Sources */,
 				350EF5DA2BCDC1CE0036E1A8 /* WidgetPreviewView.swift in Sources */,
 				350EF5C22BCDC0A60036E1A8 /* ContentView.swift in Sources */,
+				35DFAF302BDA520200307152 /* UserDefaults.swift in Sources */,
+				35DFAF292BDA4DBD00307152 /* HealthGoal.swift in Sources */,
 				350EF5C02BCDC0A60036E1A8 /* HealthPulseApp.swift in Sources */,
 				353459452BD9115A00C37C0C /* Double.swift in Sources */,
 				350EF5DD2BCDC2430036E1A8 /* GoalDetailViewViewModel.swift in Sources */,
@@ -262,11 +376,36 @@
 				350EF5D52BCDC1830036E1A8 /* FileManager.swift in Sources */,
 				3578E3CB2BD065CB00F3AD2C /* MenuView.swift in Sources */,
 				353A34FB2BCFC7B900BE01D4 /* CircleGraphView.swift in Sources */,
+				35DFAF272BDA4BBA00307152 /* HealthGoalWidget.swift in Sources */,
 				353A34FD2BCFC85B00BE01D4 /* LineChartGraphView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		35DFAF0A2BDA48C600307152 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35DFAF342BDA534C00307152 /* LineChartGraphView.swift in Sources */,
+				35DFAF182BDA48C600307152 /* HealthGoalWidget.swift in Sources */,
+				35DFAF2D2BDA50E100307152 /* WidgetData.swift in Sources */,
+				35DFAF312BDA521200307152 /* UserDefaults.swift in Sources */,
+				35DFAF322BDA534500307152 /* WidgetPreviewView.swift in Sources */,
+				35DFAF162BDA48C600307152 /* HealthGoalWidgetBundle.swift in Sources */,
+				35DFAF2E2BDA510A00307152 /* Color.swift in Sources */,
+				35DFAF2C2BDA50B200307152 /* HealthGoal.swift in Sources */,
+				35DFAF332BDA534900307152 /* CircleGraphView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		35DFAF1D2BDA48C800307152 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 35DFAF0D2BDA48C600307152 /* HealthGoalWidgetExtension */;
+			targetProxy = 35DFAF1C2BDA48C800307152 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		350EF5C92BCDC0A80036E1A8 /* Debug */ = {
@@ -388,6 +527,7 @@
 		350EF5CC2BCDC0A80036E1A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = HealthPulse/HealthPulse.entitlements;
@@ -430,6 +570,7 @@
 		350EF5CD2BCDC0A80036E1A8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = HealthPulse/HealthPulse.entitlements;
@@ -469,6 +610,67 @@
 			};
 			name = Release;
 		};
+		35DFAF202BDA48C800307152 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = HealthGoalWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8KT99V2DNB;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HealthGoalWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HealthGoalWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lmg.HealthPulse.HealthGoalWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		35DFAF212BDA48C800307152 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = HealthGoalWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8KT99V2DNB;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HealthGoalWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HealthGoalWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lmg.HealthPulse.HealthGoalWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -486,6 +688,15 @@
 			buildConfigurations = (
 				350EF5CC2BCDC0A80036E1A8 /* Debug */,
 				350EF5CD2BCDC0A80036E1A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		35DFAF222BDA48C800307152 /* Build configuration list for PBXNativeTarget "HealthGoalWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				35DFAF202BDA48C800307152 /* Debug */,
+				35DFAF212BDA48C800307152 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

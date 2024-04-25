@@ -26,10 +26,10 @@ struct WidgetPreView: View {
     
     var body: some View {
         VStack {
-            Text("Widget Preview")
-                .font(.title2)
-                .bold()
-            
+//            Text("Widget Preview")
+//                .font(.title2)
+//                .bold()
+//            
             ZStack {
                 Spacer()
                 VStack {
@@ -64,15 +64,7 @@ struct WidgetPreView: View {
                 }
                 .foregroundColor(healthGoal.colorSet.foreground)
             }
-            .padding(10)
-            .frame(width: 170, height: 170)
             .background(healthGoal.colorSet.background)
-            .cornerRadius(20) // Rounded corners for the widget-like appearance
-            //.shadow(color: .gray, radius: 5, x: 0, y: 2) // Shadow for depth
-            .overlay(
-                RoundedRectangle(cornerRadius: 20)
-                    .stroke(Color.gray, lineWidth: 1) // Gray outline
-            )
         }        
     }
 }

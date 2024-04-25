@@ -83,6 +83,10 @@ class GoalDetailViewViewModel: ObservableObject {
         fetchDistance()
     }
     
+    func saveToUserDefaults() {
+        UserDefaults(suiteName: "group.lmg.runningGoal")!.setCodableObject(selectedHealthGoal, forKey: "healthGoal")
+    }
+    
     func fetchWorkouts() {
         healthDataManager.fetchWorkouts(startDate: selectedHealthGoal.startDate, endDate: selectedHealthGoal.endDate) { [weak self] workouts, error in
             DispatchQueue.main.async {
@@ -91,6 +95,7 @@ class GoalDetailViewViewModel: ObservableObject {
                 } else {
                     self?.selectedHealthGoal.data = workouts
                     self?.calculateHealthGoalStatistics()
+                    self?.saveToUserDefaults()
                 }
             }
         }
@@ -105,6 +110,7 @@ class GoalDetailViewViewModel: ObservableObject {
                     } else {
                         self?.selectedHealthGoal.doneUnits = distance
                         self?.calculateHealthGoalStatistics()
+                        self?.saveToUserDefaults()
                     }
                 }
             }
@@ -116,6 +122,7 @@ class GoalDetailViewViewModel: ObservableObject {
                     } else {
                         self?.selectedHealthGoal.doneUnits = distance
                         self?.calculateHealthGoalStatistics()
+                        self?.saveToUserDefaults()
                     }
                 }
             }

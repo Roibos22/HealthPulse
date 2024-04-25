@@ -20,7 +20,19 @@ struct GoalDetailView: View {
                     if (vm.showGoalMissing) {
                         goalMissingView
                     } else {
+                        Text("Widget Preview")
+                            .font(.title2)
+                            .bold()
                         WidgetPreView(healthGoal: vm.selectedHealthGoal)
+                            .padding(10)
+                            .frame(width: 170, height: 170)
+                            .cornerRadius(20) // Rounded corners for the widget-like appearance
+                            //.shadow(color: .gray, radius: 5, x: 0, y: 2) // Shadow for depth
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .stroke(Color.gray, lineWidth: 1) // Gray outline
+                            )
+                        
                         WidgetSetupView(vm: vm)
                     }
                 }
