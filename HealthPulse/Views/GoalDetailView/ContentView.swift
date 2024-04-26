@@ -6,20 +6,22 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct GoalDetailView: View {
 
     @EnvironmentObject var manager: HealthDataManager
     @ObservedObject var vm: GoalDetailViewViewModel
+    @Environment(\.scenePhase) var scenePhase
     
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack {
                     GoalSetupView(vm: vm)
-//                    if (vm.showGoalMissing) {
-//                        goalMissingView
-//                    } else {
+                    if (vm.showGoalMissing) {
+                        goalMissingView
+                    } else {
                         Text("Widget Preview")
                             .font(.title2)
                             .bold()
@@ -28,14 +30,14 @@ struct GoalDetailView: View {
                             .frame(width: 170, height: 170)
                             .background(vm.selectedHealthGoal.colorSet.background)
                             .cornerRadius(20)
-                            //.shadow(color: .gray, radius: 5, x: 0, y: 2) // Shadow for depth
+                        //.shadow(color: .gray, radius: 5, x: 0, y: 2) // Shadow for depth
                             .overlay(
                                 RoundedRectangle(cornerRadius: 20)
                                     .stroke(Color.gray, lineWidth: 1) // Gray outline
                             )
                         
                         WidgetSetupView(vm: vm)
-                    //}
+                    }
                 }
                 .ignoresSafeArea()
                 .padding(.vertical, 20)
@@ -58,6 +60,11 @@ struct GoalDetailView: View {
         }
         .onAppear {
             vm.numberString = vm.selectedHealthGoal.goalUnits.trimmedString()
+        }
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase == .background {
+                WidgetCenter.shared.reloadAllTimelines()
+            }
         }
     }
 }

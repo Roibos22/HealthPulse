@@ -86,7 +86,6 @@ class GoalDetailViewViewModel: ObservableObject {
     
     func saveToUserDefaults() {
         UserDefaults(suiteName: "group.lmg.runningGoal")!.setCodableObject(selectedHealthGoal, forKey: "healthGoal")
-        WidgetCenter.shared.reloadAllTimelines()
     }
     
     func fetchWorkouts() {
