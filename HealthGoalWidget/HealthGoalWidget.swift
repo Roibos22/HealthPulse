@@ -10,24 +10,17 @@ import SwiftUI
 
 struct Provider: TimelineProvider {
     
-    // what is shown if system does not have any data
     func placeholder(in context: Context) -> HealthGoalEntry {
         HealthGoalEntry(date: Date(), healthGoal: sampleHealthGoal)
     }
 
-    //
     func getSnapshot(in context: Context, completion: @escaping (HealthGoalEntry) -> ()) {
         let entry = HealthGoalEntry(date: Date(), healthGoal: sampleHealthGoal)
         completion(entry)
     }
 
-    // where the actual timeline gets created
-    // entry is the data
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries: [HealthGoalEntry] = []
-
-        //UserDefaults(suiteName: "group.lmg.runningGoal")!.codableObject(forKey: "healthGoal", as: HealthGoal.self)
-
         
         if let loadedHealthGoal: HealthGoal = UserDefaults(suiteName: "group.lmg.runningGoal")!.codableObject(forKey: "healthGoal", as: HealthGoal.self) {
             let newHealthGoal = HealthGoalEntry(date: Date(), healthGoal: loadedHealthGoal)
@@ -36,16 +29,9 @@ struct Provider: TimelineProvider {
         } else {
             print("Failed to load data.")
         }
-        
-//        // Replace with actual data fetching logic
-//              let newHealthGoal = HealthGoalEntry(date: Date(), healthGoal: sampleHealthGoal)
-//              entries.append(newHealthGoal)
-//            
-//              print("Failed to fetch health goal data.") // Consider placeholder here
-            
 
-
-        let timeline = Timeline(entries: entries, policy: .atEnd)
+        let nextUpdateDate = Calendar.current.date(byAdding: .hour, value: 1, to: Date())!
+        let timeline = Timeline(entries: entries, policy: .after(nextUpdateDate))
         completion(timeline)
     }
 }
