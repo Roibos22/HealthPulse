@@ -43,24 +43,24 @@ struct WidgetPreView: View {
                 VStack {
                     HStack {
                         Image(systemName: "figure.run")
-                            .font(.title)
+                            .font(.title2)
                         Text(String(format: "%.0f \(healthGoal.unitSelection.abbreviation)", healthGoal.goalUnits))
                             .bold()
                         Spacer()
                     }
                     Spacer()
                     HStack {
-                        Text(String(format: "%.1f \(healthGoal.unitSelection.abbreviation)", healthGoal.doneUnits))
+                        Text(String(format: "%.1f", healthGoal.doneUnits))
                         Spacer()
-                        Text(String(format: "%.1f \(healthGoal.unitSelection.abbreviation)", differenceToExpected))
+                        Text(String(format: "%.1f", differenceToExpected))
                             .foregroundColor(betterThanExpected ? healthGoal.colorSet.positive : healthGoal.colorSet.negative)
                     }
-                    .font(.subheadline)
                     .bold()
-                    .padding(.bottom, 5)
+                    //.padding(.bottom, 5)
                 }
                 .foregroundColor(healthGoal.colorSet.foreground)
             }
+
             .background(healthGoal.colorSet.background)
         }        
     }
