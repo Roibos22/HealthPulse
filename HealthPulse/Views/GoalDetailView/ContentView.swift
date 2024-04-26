@@ -8,6 +8,12 @@
 import SwiftUI
 import WidgetKit
 
+extension UIScreen{
+   static let screenWidth = UIScreen.main.bounds.size.width
+   static let screenHeight = UIScreen.main.bounds.size.height
+   static let screenSize = UIScreen.main.bounds.size
+}
+
 struct GoalDetailView: View {
 
     @EnvironmentObject var manager: HealthDataManager
@@ -19,15 +25,15 @@ struct GoalDetailView: View {
             ScrollView {
                 VStack {
                     GoalSetupView(vm: vm)
-                    if (vm.showGoalMissing) {
-                        goalMissingView
-                    } else {
+//                    if (vm.showGoalMissing) {
+//                        goalMissingView
+//                    } else {
                         Text("Widget Preview")
                             .font(.title2)
                             .bold()
                         WidgetPreView(healthGoal: vm.selectedHealthGoal)
                             .padding(10)
-                            .frame(width: 170, height: 170)
+                            .frame(width: UIScreen.screenWidth * 0.4, height: UIScreen.screenWidth * 0.4)
                             .background(vm.selectedHealthGoal.colorSet.background)
                             .cornerRadius(20)
                         //.shadow(color: .gray, radius: 5, x: 0, y: 2) // Shadow for depth
@@ -37,7 +43,7 @@ struct GoalDetailView: View {
                             )
                         
                         WidgetSetupView(vm: vm)
-                    }
+                    //}
                 }
                 .ignoresSafeArea()
                 .padding(.vertical, 20)
