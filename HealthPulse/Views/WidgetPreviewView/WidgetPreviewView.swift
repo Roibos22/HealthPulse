@@ -36,9 +36,8 @@ struct WidgetPreView: View {
                         LineChartGraphView(healthGoal: healthGoal)
                     }
                 }
-                .padding(5)
-                .frame(height: 80)
-                .frame(maxWidth: .infinity)
+                //.frame(maxWidth: .infinity)
+                .padding(.vertical, 35)
                 
                 VStack {
                     HStack {
@@ -60,7 +59,6 @@ struct WidgetPreView: View {
                 }
                 .foregroundColor(healthGoal.colorSet.foreground)
             }
-
             .background(healthGoal.colorSet.background)
         }        
     }

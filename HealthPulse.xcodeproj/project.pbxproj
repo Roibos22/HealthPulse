@@ -22,6 +22,7 @@
 		353A34FD2BCFC85B00BE01D4 /* LineChartGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353A34FC2BCFC85B00BE01D4 /* LineChartGraphView.swift */; };
 		3578E3CB2BD065CB00F3AD2C /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3578E3CA2BD065CB00F3AD2C /* MenuView.swift */; };
 		35B60B9F2BD2A3B700B2FE13 /* LegalNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B60B9E2BD2A3B700B2FE13 /* LegalNoticeView.swift */; };
+		35C1DD7C2BDBCDCC0053F90F /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C1DD7B2BDBCDCC0053F90F /* UIScreen.swift */; };
 		35DFAF112BDA48C600307152 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35DFAF102BDA48C600307152 /* WidgetKit.framework */; };
 		35DFAF132BDA48C600307152 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35DFAF122BDA48C600307152 /* SwiftUI.framework */; };
 		35DFAF162BDA48C600307152 /* HealthGoalWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DFAF152BDA48C600307152 /* HealthGoalWidgetBundle.swift */; };
@@ -83,6 +84,7 @@
 		3578E3CA2BD065CB00F3AD2C /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		358B9FBE2BCDC78500752687 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		35B60B9E2BD2A3B700B2FE13 /* LegalNoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalNoticeView.swift; sourceTree = "<group>"; };
+		35C1DD7B2BDBCDCC0053F90F /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
 		35DFAF0E2BDA48C600307152 /* HealthGoalWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HealthGoalWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		35DFAF102BDA48C600307152 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		35DFAF122BDA48C600307152 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -219,6 +221,7 @@
 				353A34F72BCFC30F00BE01D4 /* Color.swift */,
 				353459442BD9115A00C37C0C /* Double.swift */,
 				35DFAF2F2BDA520200307152 /* UserDefaults.swift */,
+				35C1DD7B2BDBCDCC0053F90F /* UIScreen.swift */,
 			);
 			path = Extenions;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				350EF5C22BCDC0A60036E1A8 /* ContentView.swift in Sources */,
 				35DFAF302BDA520200307152 /* UserDefaults.swift in Sources */,
 				35DFAF292BDA4DBD00307152 /* HealthGoal.swift in Sources */,
+				35C1DD7C2BDBCDCC0053F90F /* UIScreen.swift in Sources */,
 				350EF5C02BCDC0A60036E1A8 /* HealthPulseApp.swift in Sources */,
 				353459452BD9115A00C37C0C /* Double.swift in Sources */,
 				350EF5DD2BCDC2430036E1A8 /* GoalDetailViewViewModel.swift in Sources */,

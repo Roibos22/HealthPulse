@@ -8,12 +8,6 @@
 import SwiftUI
 import WidgetKit
 
-extension UIScreen{
-   static let screenWidth = UIScreen.main.bounds.size.width
-   static let screenHeight = UIScreen.main.bounds.size.height
-   static let screenSize = UIScreen.main.bounds.size
-}
-
 struct GoalDetailView: View {
 
     @EnvironmentObject var manager: HealthDataManager
@@ -33,7 +27,7 @@ struct GoalDetailView: View {
                             .bold()
                         WidgetPreView(healthGoal: vm.selectedHealthGoal)
                             .padding(10)
-                            .frame(width: UIScreen.screenWidth * 0.4, height: UIScreen.screenWidth * 0.4)
+                            .frame(width: UIScreen.widgetWidth, height: UIScreen.widgetWidth)
                             .background(vm.selectedHealthGoal.colorSet.background)
                             .cornerRadius(20)
                         //.shadow(color: .gray, radius: 5, x: 0, y: 2) // Shadow for depth
