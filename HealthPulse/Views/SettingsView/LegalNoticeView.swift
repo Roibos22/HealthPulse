@@ -10,6 +10,8 @@ import SwiftUI
 import SwiftUI
 
 struct LegalNoticeView: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -35,7 +37,7 @@ struct LegalNoticeView: View {
                     E-Mail: lmgrimmeisen(at)gmail.com
                     """)
                 }
-
+                
                 VStack(alignment: .leading) {
                     Text("Haftung für Links")
                         .font(.title2)
@@ -52,17 +54,12 @@ struct LegalNoticeView: View {
                 }
                 .padding(.vertical, 15)
                 
-                
-                
                 Spacer()
-                
-                
             }
             .navigationTitle("Legal Notice")
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(15)
         }
-        
     }
 }
 

@@ -26,4 +26,9 @@ extension Color {
         }
         self.init(.sRGB, red: Double(r) / 255, green: Double(g) / 255, blue:  Double(b) / 255, opacity: Double(a) / 255)
     }
+    
 }
+
+let backgroundColorLight: Color = Color(hex: "EFEFEF")
+let backgroundColorDark: Color = Color(hex: "1C1C1C")
+

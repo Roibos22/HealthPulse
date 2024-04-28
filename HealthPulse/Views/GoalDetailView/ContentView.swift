@@ -13,7 +13,8 @@ struct GoalDetailView: View {
     @EnvironmentObject var manager: HealthDataManager
     @ObservedObject var vm: GoalDetailViewViewModel
     @Environment(\.scenePhase) var scenePhase
-    
+    @Environment(\.colorScheme) var colorScheme
+
     var body: some View {
         NavigationView {
             ScrollView {
@@ -31,10 +32,10 @@ struct GoalDetailView: View {
                             .background(vm.selectedHealthGoal.colorSet.background)
                             .cornerRadius(20)
                         //.shadow(color: .gray, radius: 5, x: 0, y: 2) // Shadow for depth
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 20)
-                                    .stroke(Color.gray, lineWidth: 1) // Gray outline
-                            )
+//                            .overlay(
+//                                RoundedRectangle(cornerRadius: 20)
+//                                    .stroke(Color.gray, lineWidth: 1) // Gray outline
+//                            )
                         
                         WidgetSetupView(vm: vm)
                     //}
@@ -43,6 +44,7 @@ struct GoalDetailView: View {
                 .padding(.vertical, 20)
                 .padding(.horizontal, 30)
             }
+            .background(colorScheme == .dark ? backgroundColorDark : backgroundColorLight)
             .navigationTitle("Your Running Goal")
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {

@@ -158,5 +158,4 @@ class GoalDetailViewViewModel: ObservableObject {
         } ()
     }
 
-    
 }

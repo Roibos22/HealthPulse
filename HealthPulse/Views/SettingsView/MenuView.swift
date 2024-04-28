@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MenuView: View {
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.colorScheme) var colorScheme
 
     let websiteURL = URL(string: "https://www.doomsdaymethod.com")!
     @State private var appleHealthAllowed: Bool = false
@@ -113,8 +114,6 @@ struct MenuView: View {
                         }
                     }
                 }
-            
-                
             }
         }
     }
