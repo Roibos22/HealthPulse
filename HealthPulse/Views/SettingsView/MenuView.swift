@@ -12,7 +12,6 @@ struct MenuView: View {
     @Environment(\.colorScheme) var colorScheme
 
     let websiteURL = URL(string: "https://www.doomsdaymethod.com")!
-    @State private var appleHealthAllowed: Bool = false
     
     var body: some View {
         
@@ -20,19 +19,6 @@ struct MenuView: View {
             ZStack {
                 
                 List {
-                    
-                    Section {
-                        HStack {
-                            Toggle(appleHealthAllowed ? "Disable Apple Health" : "Enable Apple Health",
-                                   isOn: $appleHealthAllowed)
-                            
-                        }
-                    } header: {
-                        Text("Settings")
-                    }
-                    .bold()
-                    .foregroundColor(Color(.label))
-                    .listRowBackground(Color(.systemGray5))
                     
                     // Contact Section
                     Section {
