@@ -18,45 +18,45 @@ enum WidgetColorSet: String, Codable {
     
     var background: Color {
         switch self {
-        case .white: return Color(hex: "FFFFFF")
-        case .gray: return Color(hex: "2C2C2E")
-        case .black: return Color(hex: "000000")
-        case .blue: return Color(hex: "2C7DA0")
-        case .yellow: return Color(hex: "FFBE0B")
-        case .red: return Color(hex: "AE2012")
+        case .white: return widgetBackroundColorWhite
+        case .gray: return widgetBackroundColorGray
+        case .black: return widgetBackroundColorBlack
+        case .blue: return widgetBackroundColorBlue
+        case .yellow: return widgetBackroundColorYellow
+        case .red: return widgetBackroundColorRed
         }
     }
     
     var foreground: Color {
         switch self {
-        case .white: return Color(hex: "000000")
-        case .gray: return Color(hex: "FFFFFF")
-        case .black: return Color(hex: "FFFFFF")
-        case .blue: return Color(hex: "000000")
-        case .yellow: return Color(hex: "000000")
-        case .red: return Color(hex: "000000")
+        case .white: return widgetForegroundColorBlack
+        case .gray: return widgetForegroundColorWhite
+        case .black: return widgetForegroundColorWhite
+        case .blue: return widgetForegroundColorBlack
+        case .yellow: return widgetForegroundColorBlack
+        case .red: return widgetForegroundColorBlack
         }
     }
     
     var positive: Color {
         switch self {
-        case .white: return Color(hex: "4cd964")
-        case .gray: return Color(hex: "4cd964")
-        case .black: return Color(hex: "4cd964")
-        case .blue: return Color(hex: "4cd964")
-        case .yellow: return Color(hex: "4cd964")
-        case .red: return Color(hex: "4cd964")
+        case .white: return widgetForegroundColorGreen
+        case .gray: return widgetForegroundColorGreen
+        case .black: return widgetForegroundColorGreen
+        case .blue: return widgetForegroundColorGreen
+        case .yellow: return widgetForegroundColorGreenDark
+        case .red: return widgetForegroundColorGreenDark
         }
     }
     
     var negative: Color {
         switch self {
-        case .white: return Color(hex: "ff3b30")
-        case .gray: return Color(hex: "ff3b30")
-        case .black: return Color(hex: "ff3b30")
-        case .blue: return Color(hex: "ff3b30")
-        case .yellow: return Color(hex: "ff3b30")
-        case .red: return Color(hex: "ff3b30")
+        case .white: return widgetForegroundColorRed
+        case .gray: return widgetForegroundColorRed
+        case .black: return widgetForegroundColorRed
+        case .blue: return widgetForegroundColorRed
+        case .yellow: return widgetForegroundColorRedDark
+        case .red: return widgetBackroundColorYellow
         }
     }
 }
