@@ -80,8 +80,8 @@ class GoalDetailViewViewModel: ObservableObject {
     //
     
     func updateHealthGoals() {
-        fetchWorkouts()
         fetchDistance()
+        fetchWorkouts()
     }
     
     func saveToUserDefaults() {
@@ -89,7 +89,7 @@ class GoalDetailViewViewModel: ObservableObject {
     }
     
     func fetchWorkouts() {
-        healthDataManager.fetchWorkouts(startDate: selectedHealthGoal.startDate, endDate: selectedHealthGoal.endDate) { [weak self] workouts, error in
+        healthDataManager.fetchWorkouts(healthGoal: selectedHealthGoal, startDate: selectedHealthGoal.startDate, endDate: selectedHealthGoal.endDate) { [weak self] workouts, error in
             DispatchQueue.main.async {
                 if let error = error {
                     print("Error fetching workouts: \(error.localizedDescription)")
