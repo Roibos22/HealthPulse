@@ -11,8 +11,10 @@ struct MenuView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.colorScheme) var colorScheme
 
-    let websiteURL = URL(string: "https://www.doomsdaymethod.com")!
-    
+    let websiteURL = URL(string: "https://lmgrimmeisen.wixsite.com/lmgrimmeisen/healthpulse-1")!
+    let privacyPolicyURL = URL(string: "https://lmgrimmeisen.wixsite.com/lmgrimmeisen/healthpulse-privacy-policy")!
+    let termsAndConditionsURL = URL(string: "https://lmgrimmeisen.wixsite.com/lmgrimmeisen/healthpulse-terms-and-conditions")!
+
     var body: some View {
         
         NavigationView {
@@ -65,7 +67,7 @@ struct MenuView: View {
                         }
                         
                         HStack {
-                            Link("Privacy Policy", destination: websiteURL)
+                            Link("Privacy Policy", destination: privacyPolicyURL)
                                 .multilineTextAlignment(.leading)
                             Spacer()
                             Image(systemName: "chevron.right")
@@ -73,7 +75,7 @@ struct MenuView: View {
                         }
                         
                         HStack {
-                            Link("Terms and Conditions", destination: websiteURL)
+                            Link("Terms and Conditions", destination: termsAndConditionsURL)
                                 .multilineTextAlignment(.leading)
                             Spacer()
                             Image(systemName: "chevron.right")
