@@ -22,8 +22,8 @@ struct LegalNoticeView: View {
                         .bold()
                     Text("""
                     Leon Grimmeisen
-                    Abt Rudolf Straße 43
-                    73479 Ellwangen
+                    Petersburger Straße 42
+                    10249 Berlin
                     """)
                 }
                 .padding(.bottom, 15)

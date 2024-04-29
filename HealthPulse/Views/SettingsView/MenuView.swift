@@ -14,6 +14,7 @@ struct MenuView: View {
     let websiteURL = URL(string: "https://lmgrimmeisen.wixsite.com/lmgrimmeisen/healthpulse-1")!
     let privacyPolicyURL = URL(string: "https://lmgrimmeisen.wixsite.com/lmgrimmeisen/healthpulse-privacy-policy")!
     let termsAndConditionsURL = URL(string: "https://lmgrimmeisen.wixsite.com/lmgrimmeisen/healthpulse-terms-and-conditions")!
+    let twitterURL = URL(string: "https://twitter.com/LofiLeon")!
 
     var body: some View {
         
@@ -33,7 +34,7 @@ struct MenuView: View {
                         }
                         
                         HStack {
-                            Link("Send Feedback", destination: websiteURL)
+                            Link("Send Feedback", destination: twitterURL)
                                 .multilineTextAlignment(.leading)
                             Spacer()
                             Image(systemName: "chevron.right")
@@ -41,7 +42,7 @@ struct MenuView: View {
                         }
                         
                         Button {
-                            //rateApp()
+                            rateApp()
                         } label: {
                             HStack {
                                 Text("Rate HealthPulse")
@@ -105,6 +106,13 @@ struct MenuView: View {
             }
         }
     }
+    
+    func rateApp() {
+        let appReviewURL = "itms-apps://itunes.apple.com/app/idid6497484745?action=write-review&mt=8"
+        print(appReviewURL)
+        UIApplication.shared.open(URL(string:appReviewURL)!,options: [:])
+    }
+    
 }
 
 #Preview {

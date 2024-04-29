@@ -83,10 +83,11 @@ class HealthDataManager: ObservableObject {
                 var accumulatedDistance = 0.0
                 var healthDataPoints: [HealthDataPoint] = []
                 for workout in workouts {
+                    var workoutDistance = 0.0
                     if healthGoal.unitSelection == .kilometers {
-                        let workoutDistance = workout.totalDistance?.doubleValue(for: HKUnit.meterUnit(with: .kilo)) ?? 0.0
+                        workoutDistance = workout.totalDistance?.doubleValue(for: HKUnit.meterUnit(with: .kilo)) ?? 0.0
                     } else {
-                        let workoutDistance = workout.totalDistance?.doubleValue(for: HKUnit.mile()) ?? 0.0
+                        workoutDistance = workout.totalDistance?.doubleValue(for: HKUnit.mile()) ?? 0.0
                     }
                     accumulatedDistance += workoutDistance
                     let dataPoint = HealthDataPoint(date: workout.startDate, units: workoutDistance, unitsAcc: accumulatedDistance)
