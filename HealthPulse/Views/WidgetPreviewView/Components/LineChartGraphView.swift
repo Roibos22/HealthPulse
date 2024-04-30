@@ -12,7 +12,6 @@ struct LineChartGraphView: View {
     let healthGoal: HealthGoal
 
     var body: some View {
-        
         VStack {
             ZStack {
                 Chart(healthGoal.data) { dataPoint in

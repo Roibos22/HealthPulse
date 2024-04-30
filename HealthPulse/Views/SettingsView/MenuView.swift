@@ -17,13 +17,9 @@ struct MenuView: View {
     let twitterURL = URL(string: "https://twitter.com/LofiLeon")!
 
     var body: some View {
-        
         NavigationView {
             ZStack {
-                
                 List {
-                    
-                    // Contact Section
                     Section {
                         HStack {
                             Link("Visit our website", destination: websiteURL)
@@ -52,7 +48,6 @@ struct MenuView: View {
                                     .foregroundColor(.blue)
                             }
                         }
-                        
                         
                         ZStack {
                             NavigationLink {

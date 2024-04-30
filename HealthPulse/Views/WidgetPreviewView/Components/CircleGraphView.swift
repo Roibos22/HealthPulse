@@ -13,12 +13,11 @@ struct CircleGraphView: View {
     let strokeWidth: CGFloat = 15
     
     var body: some View {
-        
         ZStack {
             Circle()
-                .stroke(lineWidth: strokeWidth) // Adjust line width as needed
-                .opacity(0.3) // Set background circle opacity (optional)
-                .foregroundColor(Color.gray) // Adjust background circle color (optional)
+                .stroke(lineWidth: strokeWidth)
+                .opacity(0.3)
+                .foregroundColor(Color.gray)
             
             Circle()
                 .trim(from: 0.0, to: healthGoal.expectedProgress)
@@ -34,7 +33,6 @@ struct CircleGraphView: View {
             
             Text(String(format: "%.0f%%", healthGoal.actualProgress * 100))
                 .foregroundColor(healthGoal.colorSet.foreground)
-
         }
     }
 }

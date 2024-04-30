@@ -36,7 +36,6 @@ struct Provider: TimelineProvider {
     }
 }
 
-// always needs at least a date
 struct HealthGoalEntry: TimelineEntry {
     let date: Date
     let healthGoal: HealthGoal
@@ -52,15 +51,11 @@ struct HealthGoalWidgetEntryView : View {
             }
             .containerBackground(entry.healthGoal.colorSet.background, for: .widget)
         } else {
-             //For iOS 16 and earlier
             ZStack {
                 ContainerRelativeShape()
                     .fill(entry.healthGoal.colorSet.background)
                 WidgetPreView(healthGoal: entry.healthGoal)
-                    //.background(entry.healthGoal.colorSet.background)
-                    //.containerBackground(entry.healthGoal.colorSet.background, for: .widget)
             }
-            //.background(VisualEffectBlur(blurStyle: .systemMaterialDark))
         }
     }
 }
@@ -70,31 +65,18 @@ struct HealthGoalWidget: Widget {
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
-//            if #available(iOS 17.0, *) {
-//                HealthGoalWidgetEntryView(entry: entry)
-//                    .containerBackground(.fill, for: .widget)
-//            } else {
             ZStack {
                 ContainerRelativeShape()
                     .fill(entry.healthGoal.colorSet.background)
                 HealthGoalWidgetEntryView(entry: entry)
                     .padding(10)
             }
-               
-           // }
         }
         .configurationDisplayName("My Widget")
         .description("This is an example widget.")
-        //.supportedFamilies([.systemSmall])
+        .supportedFamilies([.systemSmall])
     }
 }
-
-//#Preview(as: .systemSmall) {
-//    HealthGoalWidget()
-//} timeline: {
-//    HealthGoalEntry(date: .now, healthGoal: sampleHealthGoal)
-//    HealthGoalEntry(date: .now, healthGoal: sampleHealthGoal)
-//}
 
 struct HealthGoalWidget_Previews: PreviewProvider {
     static var previews: some View {

@@ -8,19 +8,9 @@
 import Foundation
 import HealthKit
 
-extension Date {
-    static var startOfDay: Date {
-        Calendar.current.startOfDay(for: Date()) - 11111
-    }
-    static var oneYearAgo: Date {
-        Calendar.current.date(byAdding: .year, value: -1, to: now) ?? Date()
-    }
-}
-
 class HealthDataManager: ObservableObject {
-    
-    let healthStore = HKHealthStore()
     @Published var distance: Double = 0
+    let healthStore = HKHealthStore()
     
     init() {
         let distanceType = HKQuantityType(.distanceWalkingRunning)
@@ -34,6 +24,11 @@ class HealthDataManager: ObservableObject {
             }
         }
     }
+}
+
+// MARK: FUNCTIONS
+
+extension HealthDataManager {
     
     func fetchRunningDistanceKm(startDate: Date, endDate: Date, completion: @escaping (Double, Error?) -> Void) {
         let runningPredicate = HKQuery.predicateForWorkouts(with: .running)
@@ -75,6 +70,7 @@ class HealthDataManager: ObservableObject {
         let runningPredicate = HKQuery.predicateForWorkouts(with: .running)
         let timePredicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate)
         let predicates = NSCompoundPredicate(andPredicateWithSubpredicates: [timePredicate, runningPredicate])
+        
         let query = HKSampleQuery(sampleType: HKObjectType.workoutType(), predicate: predicates, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { _, results, error in
                 guard let workouts = results as? [HKWorkout], error == nil else {
                     completion([], error)
@@ -95,7 +91,8 @@ class HealthDataManager: ObservableObject {
                 }
                 completion(healthDataPoints, nil)
             }
-
         healthStore.execute(query)
     }
+    
 }
+

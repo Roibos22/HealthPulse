@@ -12,6 +12,7 @@ import WidgetKit
 class GoalDetailViewViewModel: ObservableObject {
     
     private var healthDataManager: HealthDataManager
+    let healthGoalsPath = FileManager.documentsDirectory.appendingPathComponent("HealthGoals")
 
     @Published var healthGoals: [HealthGoal]
     @Published var selectedHealthGoal: HealthGoal
@@ -19,16 +20,35 @@ class GoalDetailViewViewModel: ObservableObject {
     @Published var showGoalMissing: Bool = true
     @Published var showMenuSheet: Bool = false
 
-    let healthGoalsPath = FileManager.documentsDirectory.appendingPathComponent("HealthGoals")
-    
     init(healthDataManager: HealthDataManager = HealthDataManager()) {
         self.healthDataManager = healthDataManager
         self.healthGoals = []
         self.selectedHealthGoal = HealthGoal(title: "Goal", goalType: .running, startDate: Date(), endDate: Date(), doneUnits: 0, goalUnits: 0, unitSelection: .kilometers, actualProgress: 0, expectedProgress: 0, expectedUnits: 0, data: [], graphType: .circle, colorSet: .black)
         loadHealthGoals()
     }
+}
+
+// #MARK: FUNCTIONS
+
+extension GoalDetailViewViewModel {
     
-    func loadHealthGoals() {
+    func updateData() {
+        if let index = healthGoals.firstIndex(where: {$0.id == selectedHealthGoal.id}) {
+            healthGoals[index] = selectedHealthGoal.updateCompletion()
+        } else {
+            print("Error while updating")
+        }
+        save()
+        updateGoalMissingView()
+        updateHealthGoals()
+    }
+}
+
+// #MARK: PRIVATE FUNCTIONS
+
+extension GoalDetailViewViewModel {
+    
+    private func loadHealthGoals() {
         let defaultGoal = HealthGoal(title: "Goal", goalType: .running, startDate: Date(), endDate: Date(), doneUnits: 0, goalUnits: 0, unitSelection: .kilometers, actualProgress: 0, expectedProgress: 0, expectedUnits: 0, data: [], graphType: .circle, colorSet: .black)
         do {
             let data = try Data(contentsOf: healthGoalsPath)
@@ -41,7 +61,12 @@ class GoalDetailViewViewModel: ObservableObject {
         updateData()
     }
     
-    func save() {
+    private func addData(healtGoal: HealthGoal) {
+        healthGoals.append(healtGoal)
+        save()
+    }
+    
+    private func save() {
         do {
             let data = try JSONEncoder().encode(healthGoals)
             try data.write(to: healthGoalsPath, options: [.atomicWrite, .completeFileProtection])
@@ -53,23 +78,7 @@ class GoalDetailViewViewModel: ObservableObject {
         }
     }
     
-    func addData(healtGoal: HealthGoal) {
-        healthGoals.append(healtGoal)
-        save()
-    }
-    
-    func updateData() {
-        if let index = healthGoals.firstIndex(where: {$0.id == selectedHealthGoal.id}) {
-            healthGoals[index] = selectedHealthGoal.updateCompletion()
-        } else {
-            print("Error while updating")
-        }
-        save()
-        updateGoalMissingView()
-        updateHealthGoals()
-    }
-    
-    func updateGoalMissingView() {
+    private func updateGoalMissingView() {
         if selectedHealthGoal.goalUnits == 0.0 {
             showGoalMissing = true
         } else {
@@ -77,18 +86,16 @@ class GoalDetailViewViewModel: ObservableObject {
         }
     }
     
-    //
-    
-    func updateHealthGoals() {
+    private func updateHealthGoals() {
         fetchDistance()
         fetchWorkouts()
     }
     
-    func saveToUserDefaults() {
+    private func saveToUserDefaults() {
         UserDefaults(suiteName: "group.lmg.runningGoal")!.setCodableObject(selectedHealthGoal, forKey: "healthGoal")
     }
     
-    func fetchWorkouts() {
+    private func fetchWorkouts() {
         healthDataManager.fetchWorkouts(healthGoal: selectedHealthGoal, startDate: selectedHealthGoal.startDate, endDate: selectedHealthGoal.endDate) { [weak self] workouts, error in
             DispatchQueue.main.async {
                 if let error = error {
@@ -102,7 +109,7 @@ class GoalDetailViewViewModel: ObservableObject {
         }
     }
     
-    func fetchDistance() {
+    private func fetchDistance() {
         if selectedHealthGoal.unitSelection == .kilometers {
             healthDataManager.fetchRunningDistanceKm(startDate: selectedHealthGoal.startDate, endDate: selectedHealthGoal.endDate) { [weak self] distance, error in
                 DispatchQueue.main.async {
@@ -130,7 +137,7 @@ class GoalDetailViewViewModel: ObservableObject {
         }
     }
     
-    func calculateHealthGoalStatistics() {
+    private func calculateHealthGoalStatistics() {
         selectedHealthGoal.actualProgress = {
             if selectedHealthGoal.doneUnits == 0 || selectedHealthGoal.goalUnits == 0 {
                 return 0.0
@@ -157,5 +164,4 @@ class GoalDetailViewViewModel: ObservableObject {
             return result
         } ()
     }
-
 }

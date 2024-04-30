@@ -26,7 +26,6 @@ struct WidgetPreView: View {
     
     var body: some View {
         VStack {
-
             ZStack {
                 Spacer()
                 VStack {
@@ -36,7 +35,6 @@ struct WidgetPreView: View {
                         LineChartGraphView(healthGoal: healthGoal)
                     }
                 }
-                //.frame(maxWidth: .infinity)
                 .padding(.vertical, 35)
                 
                 VStack {
@@ -55,7 +53,6 @@ struct WidgetPreView: View {
                             .foregroundColor(betterThanExpected ? healthGoal.colorSet.positive : healthGoal.colorSet.negative)
                     }
                     .bold()
-                    //.padding(.bottom, 5)
                 }
                 .foregroundColor(healthGoal.colorSet.foreground)
             }
