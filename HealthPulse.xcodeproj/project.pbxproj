@@ -23,6 +23,7 @@
 		3578E3CB2BD065CB00F3AD2C /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3578E3CA2BD065CB00F3AD2C /* MenuView.swift */; };
 		35B60B9F2BD2A3B700B2FE13 /* LegalNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B60B9E2BD2A3B700B2FE13 /* LegalNoticeView.swift */; };
 		35C1DD7C2BDBCDCC0053F90F /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C1DD7B2BDBCDCC0053F90F /* UIScreen.swift */; };
+		35D2EA662BE2C2860012EC06 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E3996D2BE23F3F0013A1BB /* Date.swift */; };
 		35DFAF112BDA48C600307152 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35DFAF102BDA48C600307152 /* WidgetKit.framework */; };
 		35DFAF132BDA48C600307152 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35DFAF122BDA48C600307152 /* SwiftUI.framework */; };
 		35DFAF162BDA48C600307152 /* HealthGoalWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DFAF152BDA48C600307152 /* HealthGoalWidgetBundle.swift */; };
@@ -414,6 +415,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				35DFAF342BDA534C00307152 /* LineChartGraphView.swift in Sources */,
+				35D2EA662BE2C2860012EC06 /* Date.swift in Sources */,
 				35DFAF182BDA48C600307152 /* HealthGoalWidget.swift in Sources */,
 				35DFAF2D2BDA50E100307152 /* WidgetData.swift in Sources */,
 				35DFAF312BDA521200307152 /* UserDefaults.swift in Sources */,

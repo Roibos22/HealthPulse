@@ -46,7 +46,7 @@ struct HealthGoalWidgetEntryView : View {
 
     var body: some View {
         if #available(iOS 17, *) {
-            VStack {
+            ZStack {
                 WidgetPreView(healthGoal: entry.healthGoal)
             }
             .containerBackground(entry.healthGoal.colorSet.background, for: .widget)
@@ -74,6 +74,7 @@ struct HealthGoalWidget: Widget {
         }
         .configurationDisplayName("My Widget")
         .description("This is an example widget.")
+        .contentMarginsDisabled()
         .supportedFamilies([.systemSmall])
     }
 }

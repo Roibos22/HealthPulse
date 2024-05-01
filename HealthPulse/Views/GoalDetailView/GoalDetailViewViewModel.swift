@@ -49,7 +49,9 @@ extension GoalDetailViewViewModel {
 extension GoalDetailViewViewModel {
     
     private func loadHealthGoals() {
-        let defaultGoal = HealthGoal(title: "Goal", goalType: .running, startDate: Date.firstDayOfTheYear, endDate: Date.lastDayOfTheYear, doneUnits: 0, goalUnits: 100, unitSelection: .kilometers, actualProgress: 0, expectedProgress: 0, expectedUnits: 0, data: [], graphType: .circle, colorSet: .gray)
+        let defaultGoalData = createSampleData(startDay: Date.firstDayOfTheYear, numberOfDays: 250, averageUnits: 8, averageTimeBetweenDataPoints: 3)
+        let defaultGoal = HealthGoal(title: "Goal", goalType: .running, startDate: Date.firstDayOfTheYear, endDate: Date.lastDayOfTheYear, doneUnits: 0, goalUnits: 100, unitSelection: .kilometers, actualProgress: 0, expectedProgress: 0, expectedUnits: 0, data: defaultGoalData, graphType: .circle, colorSet: .gray)
+//        let defaultGoal = HealthGoal(title: "Goal", goalType: .running, startDate: Date.firstDayOfTheYear, endDate: Date.lastDayOfTheYear, doneUnits: 0, goalUnits: 100, unitSelection: .kilometers, actualProgress: 0, expectedProgress: 0, expectedUnits: 0, data: [], graphType: .circle, colorSet: .gray)
         do {
             let data = try Data(contentsOf: healthGoalsPath)
             healthGoals = try JSONDecoder().decode([HealthGoal].self, from: data)
@@ -93,6 +95,7 @@ extension GoalDetailViewViewModel {
     }
     
     private func fetchWorkouts() {
+        
         healthDataManager.fetchWorkouts(healthGoal: selectedHealthGoal, startDate: selectedHealthGoal.startDate, endDate: selectedHealthGoal.endDate) { [weak self] workouts, error in
             DispatchQueue.main.async {
                 if let error = error {
@@ -104,6 +107,18 @@ extension GoalDetailViewViewModel {
                 }
             }
         }
+        
+        // TESTING:
+        // selectedHealthGoal = HealthGoal(title: "", goalType: .running, startDate: Date.firstDayOfTheYear, endDate: Date.lastDayOfTheYear, doneUnits: 743, goalUnits: 1000, unitSelection: .kilometers, actualProgress: 744, expectedProgress: 0.677, expectedUnits: 677, data: data, graphType: .circle, colorSet: .gray)
+        // selectedHealthGoal.data = sampleData
+        // selectedHealthGoal.goalUnits = 1000
+        // selectedHealthGoal.doneUnits = sampleData.last!.unitsAcc
+        // selectedHealthGoal.actualProgress = sampleData.last!.unitsAcc / 100
+        // selectedHealthGoal.expectedProgress =  80.8 // sampleData.last!.unitsAcc * 1.2 // 100
+        // selectedHealthGoal.expectedUnits = sampleData.last!.unitsAcc * 1.2
+        // calculateHealthGoalStatistics()
+        // saveToUserDefaults()
+
     }
     
     private func fetchDistance() {

@@ -21,6 +21,7 @@ struct CircleGraphView: View {
             
             Circle()
                 .trim(from: 0.0, to: healthGoal.expectedProgress)
+                // TESTING: .trim(from: 0.0, to: 0.7)
                 .stroke(style: StrokeStyle(lineWidth: strokeWidth, lineCap: .round))
                 .foregroundColor(healthGoal.colorSet.negative)
                 .rotationEffect(Angle(degrees: -90))
