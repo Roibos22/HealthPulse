@@ -54,6 +54,7 @@ struct GoalDetailView: View {
                 .padding()
         }
         .onAppear {
+            vm.updateData()
             vm.numberString = vm.selectedHealthGoal.goalUnits.trimmedString()
         }
         .onChange(of: scenePhase) { newPhase in
