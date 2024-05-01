@@ -45,7 +45,7 @@ enum WidgetColorSet: String, Codable {
         case .black: return widgetForegroundColorGreen
         case .blue: return widgetForegroundColorGreen
         case .yellow: return widgetForegroundColorGreenDark
-        case .red: return widgetForegroundColorGreenDark
+        case .red: return widgetForegroundColorGreen
         }
     }
     

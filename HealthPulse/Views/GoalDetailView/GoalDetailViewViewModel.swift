@@ -9,6 +9,30 @@ import Foundation
 import SwiftData
 import WidgetKit
 
+
+extension Date {
+    
+    static var firstDayOfTheYear: Date {
+        let calendar = Calendar.current
+        let yearComponent = calendar.dateComponents([.year], from: Date())
+        var firstDayComponents = DateComponents()
+        firstDayComponents.year = yearComponent.year
+        firstDayComponents.month = 1
+        firstDayComponents.day = 1
+        return calendar.date(from: firstDayComponents) ?? Date()
+    }
+    
+    static var lastDayOfTheYear: Date {
+        let calendar = Calendar.current
+        let yearComponent = calendar.dateComponents([.year], from: Date())
+        var lastDayComponents = DateComponents()
+        lastDayComponents.year = yearComponent.year
+        lastDayComponents.month = 12
+        lastDayComponents.day = 31
+        return calendar.date(from: lastDayComponents) ?? Date()
+    }
+}
+
 class GoalDetailViewViewModel: ObservableObject {
     
     private var healthDataManager: HealthDataManager
@@ -23,7 +47,7 @@ class GoalDetailViewViewModel: ObservableObject {
     init(healthDataManager: HealthDataManager = HealthDataManager()) {
         self.healthDataManager = healthDataManager
         self.healthGoals = []
-        self.selectedHealthGoal = HealthGoal(title: "Goal", goalType: .running, startDate: Date(), endDate: Date(), doneUnits: 0, goalUnits: 0, unitSelection: .kilometers, actualProgress: 0, expectedProgress: 0, expectedUnits: 0, data: [], graphType: .circle, colorSet: .black)
+        self.selectedHealthGoal = HealthGoal(title: "Goal", goalType: .running, startDate: Date.firstDayOfTheYear, endDate: Date.lastDayOfTheYear, doneUnits: 0, goalUnits: 100, unitSelection: .kilometers, actualProgress: 0, expectedProgress: 0, expectedUnits: 0, data: [], graphType: .circle, colorSet: .gray)
         loadHealthGoals()
     }
 }
@@ -49,7 +73,7 @@ extension GoalDetailViewViewModel {
 extension GoalDetailViewViewModel {
     
     private func loadHealthGoals() {
-        let defaultGoal = HealthGoal(title: "Goal", goalType: .running, startDate: Date(), endDate: Date(), doneUnits: 0, goalUnits: 0, unitSelection: .kilometers, actualProgress: 0, expectedProgress: 0, expectedUnits: 0, data: [], graphType: .circle, colorSet: .black)
+        let defaultGoal = HealthGoal(title: "Goal", goalType: .running, startDate: Date.firstDayOfTheYear, endDate: Date.lastDayOfTheYear, doneUnits: 0, goalUnits: 100, unitSelection: .kilometers, actualProgress: 0, expectedProgress: 0, expectedUnits: 0, data: [], graphType: .circle, colorSet: .gray)
         do {
             let data = try Data(contentsOf: healthGoalsPath)
             healthGoals = try JSONDecoder().decode([HealthGoal].self, from: data)
@@ -57,7 +81,6 @@ extension GoalDetailViewViewModel {
             addData(healtGoal: defaultGoal)
         }
         selectedHealthGoal = healthGoals.first(where: { $0.goalType == .running }) ?? defaultGoal
-        print(selectedHealthGoal.colorSet)
         updateData()
     }
     
@@ -71,10 +94,8 @@ extension GoalDetailViewViewModel {
             let data = try JSONEncoder().encode(healthGoals)
             try data.write(to: healthGoalsPath, options: [.atomicWrite, .completeFileProtection])
             print("Data saved.")
-            print(selectedHealthGoal.colorSet)
         } catch {
             print("Unable to save data.")
-            print(error)
         }
     }
     
@@ -149,16 +170,16 @@ extension GoalDetailViewViewModel {
             if selectedHealthGoal.doneUnits == 0 || selectedHealthGoal.goalUnits == 0 {
                 return 0.0
             } else {
-                let totalDuration = selectedHealthGoal.endDate.timeIntervalSince(selectedHealthGoal.startDate) / (60 * 60 * 24) // Convert to days
-                let passedDuration = Date().timeIntervalSince(selectedHealthGoal.startDate) / (60 * 60 * 24) // Convert to days
+                let totalDuration = selectedHealthGoal.endDate.timeIntervalSince(selectedHealthGoal.startDate) / (60 * 60 * 24)
+                let passedDuration = Date().timeIntervalSince(selectedHealthGoal.startDate) / (60 * 60 * 24)
                 let expectedProgressPerDay = selectedHealthGoal.goalUnits / totalDuration
                 let result = (expectedProgressPerDay * passedDuration) / selectedHealthGoal.goalUnits
                 return result
             }
         } ()
         selectedHealthGoal.expectedUnits = {
-            let totalDuration = selectedHealthGoal.endDate.timeIntervalSince(selectedHealthGoal.startDate) / (60 * 60 * 24) // Convert to days
-               let passedDuration = Date().timeIntervalSince(selectedHealthGoal.startDate) / (60 * 60 * 24) // Convert to days
+            let totalDuration = selectedHealthGoal.endDate.timeIntervalSince(selectedHealthGoal.startDate) / (60 * 60 * 24)
+               let passedDuration = Date().timeIntervalSince(selectedHealthGoal.startDate) / (60 * 60 * 24)
                let expectedProgressPerDay = selectedHealthGoal.goalUnits / totalDuration
             let result = (expectedProgressPerDay * passedDuration)
             return result
