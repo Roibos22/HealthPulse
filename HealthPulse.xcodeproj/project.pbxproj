@@ -41,6 +41,8 @@
 		35DFAF342BDA534C00307152 /* LineChartGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353A34FC2BCFC85B00BE01D4 /* LineChartGraphView.swift */; };
 		35E3996A2BE0EA7E0013A1BB /* GoalSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E399692BE0EA7E0013A1BB /* GoalSetupView.swift */; };
 		35E3996C2BE0EB080013A1BB /* WidgetSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E3996B2BE0EB080013A1BB /* WidgetSetupView.swift */; };
+		35E3996E2BE23F3F0013A1BB /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E3996D2BE23F3F0013A1BB /* Date.swift */; };
+		35E399702BE266B80013A1BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35E3996F2BE266B80013A1BB /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +101,8 @@
 		35DFAF2F2BDA520200307152 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		35E399692BE0EA7E0013A1BB /* GoalSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSetupView.swift; sourceTree = "<group>"; };
 		35E3996B2BE0EB080013A1BB /* WidgetSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSetupView.swift; sourceTree = "<group>"; };
+		35E3996D2BE23F3F0013A1BB /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		35E3996F2BE266B80013A1BB /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +150,7 @@
 			children = (
 				358B9FBE2BCDC78500752687 /* Info.plist */,
 				350EF5BF2BCDC0A60036E1A8 /* HealthPulseApp.swift */,
+				35E3996F2BE266B80013A1BB /* LaunchScreen.storyboard */,
 				350EF5CF2BCDC1250036E1A8 /* Services */,
 				350EF5D02BCDC12B0036E1A8 /* Utils */,
 				350EF5D12BCDC1310036E1A8 /* Models */,
@@ -227,6 +232,7 @@
 				353459442BD9115A00C37C0C /* Double.swift */,
 				35DFAF2F2BDA520200307152 /* UserDefaults.swift */,
 				35C1DD7B2BDBCDCC0053F90F /* UIScreen.swift */,
+				35E3996D2BE23F3F0013A1BB /* Date.swift */,
 			);
 			path = Extenions;
 			sourceTree = "<group>";
@@ -359,6 +365,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35E399702BE266B80013A1BB /* LaunchScreen.storyboard in Resources */,
 				350EF5C82BCDC0A80036E1A8 /* Preview Assets.xcassets in Resources */,
 				350EF5C42BCDC0A80036E1A8 /* Assets.xcassets in Resources */,
 			);
@@ -390,6 +397,7 @@
 				353459452BD9115A00C37C0C /* Double.swift in Sources */,
 				350EF5DD2BCDC2430036E1A8 /* GoalDetailViewViewModel.swift in Sources */,
 				350EF5D32BCDC1610036E1A8 /* HealthDataManager.swift in Sources */,
+				35E3996E2BE23F3F0013A1BB /* Date.swift in Sources */,
 				35E3996C2BE0EB080013A1BB /* WidgetSetupView.swift in Sources */,
 				353A34F82BCFC30F00BE01D4 /* Color.swift in Sources */,
 				350EF5D52BCDC1830036E1A8 /* FileManager.swift in Sources */,
@@ -567,6 +575,7 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -610,6 +619,7 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
