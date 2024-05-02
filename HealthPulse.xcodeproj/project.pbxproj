@@ -569,8 +569,11 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HealthPulse/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Health Pulse";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Please allow access to your Apple Health Data in order to optimze your experience.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Please allow access to your Apple Health Data in order to optimze your experience.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Please allow access to your Apple Health Data in order to optimze your experience.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -613,8 +616,11 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HealthPulse/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Health Pulse";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Please allow access to your Apple Health Data in order to optimze your experience.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Please allow access to your Apple Health Data in order to optimze your experience.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Please allow access to your Apple Health Data in order to optimze your experience.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
