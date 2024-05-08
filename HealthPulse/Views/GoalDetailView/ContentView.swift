@@ -21,6 +21,8 @@ struct GoalDetailView: View {
                     GoalSetupView(vm: vm)
                     if (vm.showGoalMissing) {
                         goalMissingView
+                    } else if (vm.noDataFound) {
+                        noDataFoundView
                     } else {
                         Text("Widget Preview")
                             .font(.title2)
@@ -77,6 +79,25 @@ extension GoalDetailView {
                 Text("Please enter goal information")
                     .multilineTextAlignment(.center)
                     .bold()
+                    .padding(5)
+            }
+            .frame(width: 200)
+        }
+    }
+    
+    var noDataFoundView: some View {
+        ZStack {
+            Circle()
+                .frame(width: 280)
+                .opacity(0.2)
+            VStack(alignment: .center) {
+                Image(systemName: "questionmark.folder")
+                    .font(.largeTitle)
+                    .padding(5)
+                Text("No data found.")
+                    .padding(5)
+                Text("Please complete a workout and make sure AppleHealth is enabled in your Settings.")
+                    .multilineTextAlignment(.center)
                     .padding(5)
             }
             .frame(width: 200)
