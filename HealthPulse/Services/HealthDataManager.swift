@@ -30,6 +30,29 @@ class HealthDataManager: ObservableObject {
 
 extension HealthDataManager {
     
+    
+    
+    func fetchHealthDataAccess() -> Bool {
+
+        let dataTypes = [
+            // walking and running distancwe
+            // workouts
+            HKObjectType.workoutType(),
+            HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning)
+            //HKQuantityType.quantityType(forIdentifier: .stepCount)!,
+            //HKQuantityType.quantityType(forIdentifier: .heartRate)!,
+            // Add other data types as needed
+        ]
+
+        var allAuthorized = true
+
+        for dataType in dataTypes {
+           // healthStore.authorizationStatus(for: dataType)
+        }
+
+        return true
+    }
+    
     func fetchRunningDistanceKm(startDate: Date, endDate: Date, completion: @escaping (Double, Error?) -> Void) {
         let runningPredicate = HKQuery.predicateForWorkouts(with: .running)
         let timePredicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate)
