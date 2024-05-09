@@ -19,6 +19,7 @@ class GoalDetailViewViewModel: ObservableObject {
     @Published var numberString: String = ""
     @Published var showGoalMissing: Bool = true
     @Published var showMenuSheet: Bool = false
+    @Published var noDataFound: Bool = false
 
     init(healthDataManager: HealthDataManager = HealthDataManager()) {
         self.healthDataManager = healthDataManager
@@ -88,6 +89,11 @@ extension GoalDetailViewViewModel {
     private func updateHealthGoals() {
         fetchDistance()
         fetchWorkouts()
+        if (selectedHealthGoal.data.isEmpty || selectedHealthGoal.doneUnits == 0.0) {
+            noDataFound = true
+        } else {
+            noDataFound = false
+        }
     }
     
     private func saveToUserDefaults() {
