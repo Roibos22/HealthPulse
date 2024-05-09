@@ -63,6 +63,9 @@ struct GoalDetailView: View {
             if newPhase == .background {
                 WidgetCenter.shared.reloadAllTimelines()
             }
+            if newPhase == .active {
+                vm.updateData()
+            }
         }
     }
 }
