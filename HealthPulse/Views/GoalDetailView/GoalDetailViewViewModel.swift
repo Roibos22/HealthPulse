@@ -8,6 +8,7 @@
 import Foundation
 import SwiftData
 import WidgetKit
+import BackgroundTasks
 
 class GoalDetailViewViewModel: ObservableObject {
     
@@ -98,6 +99,44 @@ extension GoalDetailViewViewModel {
     
     private func saveToUserDefaults() {
         UserDefaults(suiteName: "group.lmg.runningGoal")!.setCodableObject(selectedHealthGoal, forKey: "healthGoal")
+    }
+    
+    func scheduleBackgroundUpdate() {
+        let request1 = BGAppRefreshTaskRequest(identifier: "updateData")
+        request1.earliestBeginDate = Calendar.current.date(byAdding: .hour, value: 4, to: Date())
+        let request2 = BGAppRefreshTaskRequest(identifier: "updateData")
+        request2.earliestBeginDate = Calendar.current.date(byAdding: .hour, value: 8, to: Date())
+        let request3 = BGAppRefreshTaskRequest(identifier: "updateData")
+        request3.earliestBeginDate = Calendar.current.date(byAdding: .hour, value: 12, to: Date())
+        let request4 = BGAppRefreshTaskRequest(identifier: "updateData")
+        request4.earliestBeginDate = Calendar.current.date(byAdding: .hour, value: 16, to: Date())
+        let request5 = BGAppRefreshTaskRequest(identifier: "updateData")
+        request5.earliestBeginDate = Calendar.current.date(byAdding: .hour, value: 20, to: Date())
+        let request6 = BGAppRefreshTaskRequest(identifier: "updateData")
+        request6.earliestBeginDate = Calendar.current.date(byAdding: .hour, value: 24, to: Date())
+        let request7 = BGAppRefreshTaskRequest(identifier: "updateData")
+        request7.earliestBeginDate = Calendar.current.date(byAdding: .hour, value: 28, to: Date())
+        let request8 = BGAppRefreshTaskRequest(identifier: "updateData")
+        request8.earliestBeginDate = Calendar.current.date(byAdding: .hour, value: 32, to: Date())
+        let request9 = BGAppRefreshTaskRequest(identifier: "updateData")
+        request9.earliestBeginDate = Calendar.current.date(byAdding: .hour, value: 36, to: Date())
+        let request10 = BGAppRefreshTaskRequest(identifier: "updateData")
+        request10.earliestBeginDate = Calendar.current.date(byAdding: .hour, value: 40, to: Date())
+        do {
+            try BGTaskScheduler.shared.submit(request1)
+            try BGTaskScheduler.shared.submit(request2)
+            try BGTaskScheduler.shared.submit(request3)
+            try BGTaskScheduler.shared.submit(request4)
+            try BGTaskScheduler.shared.submit(request5)
+            try BGTaskScheduler.shared.submit(request6)
+            try BGTaskScheduler.shared.submit(request7)
+            try BGTaskScheduler.shared.submit(request8)
+            try BGTaskScheduler.shared.submit(request9)
+            try BGTaskScheduler.shared.submit(request10)
+            print("Background Tasks Scheduled!")
+        } catch(let error) {
+            print("Scheduling Error: \(error.localizedDescription)")
+        }
     }
     
     private func fetchWorkouts() {

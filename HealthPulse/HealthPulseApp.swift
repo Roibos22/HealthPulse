@@ -10,11 +10,15 @@ import SwiftUI
 @main
 struct HealthPulseApp: App {
     @StateObject var manager = HealthDataManager()
+    @StateObject var vm = GoalDetailViewViewModel()
 
     var body: some Scene {
         WindowGroup {
-            GoalDetailView(vm: GoalDetailViewViewModel())
+            GoalDetailView(vm: vm)
                 .environmentObject(manager)
+        }
+        .backgroundTask(.appRefresh("updateData")) {
+            await vm.updateData()
         }
     }
 }

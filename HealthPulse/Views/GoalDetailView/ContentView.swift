@@ -7,6 +7,7 @@
 
 import SwiftUI
 import WidgetKit
+import BackgroundTasks
 
 struct GoalDetailView: View {
     @EnvironmentObject var manager: HealthDataManager
@@ -57,6 +58,7 @@ struct GoalDetailView: View {
         }
         .onAppear {
             vm.updateData()
+            vm.scheduleBackgroundUpdate()
             vm.numberString = vm.selectedHealthGoal.goalUnits.trimmedString()
         }
         .onChange(of: scenePhase) { newPhase in
@@ -67,6 +69,7 @@ struct GoalDetailView: View {
                 vm.updateData()
             }
         }
+
     }
 }
 
