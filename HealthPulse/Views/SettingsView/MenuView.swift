@@ -11,9 +11,9 @@ struct MenuView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.colorScheme) var colorScheme
 
-    let websiteURL = URL(string: "https://lmgrimmeisen.wixsite.com/lmgrimmeisen/healthpulse-1")!
-    let privacyPolicyURL = URL(string: "https://lmgrimmeisen.wixsite.com/lmgrimmeisen/healthpulse-privacy-policy")!
-    let termsAndConditionsURL = URL(string: "https://lmgrimmeisen.wixsite.com/lmgrimmeisen/healthpulse-terms-and-conditions")!
+    let websiteURL = URL(string: "https://leongrimmeisen.de/projects/HealthPulse/index.html")!
+    let privacyPolicyURL = URL(string: "https://leongrimmeisen.de/projects/HealthPulse/privacy-policy.html")!
+    let termsAndConditionsURL = URL(string: "https://leongrimmeisen.de/projects/HealthPulse/terms-and-conditions.html")!
     let twitterURL = URL(string: "https://twitter.com/LofiLeon")!
 
     var body: some View {
