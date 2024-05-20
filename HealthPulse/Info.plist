@@ -6,6 +6,8 @@
 	<array>
 		<string>updateData</string>
 	</array>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>Please allow access to your Apple Health Data in order to optimze your experience.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
