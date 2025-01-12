@@ -6,13 +6,28 @@
 	<dict>
 		<key>HealthGoalWidgetExtension.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>0</integer>
 		</dict>
 		<key>HealthPulse.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>350EF5BB2BCDC0A60036E1A8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>35DFAF0D2BDA48C600307152</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

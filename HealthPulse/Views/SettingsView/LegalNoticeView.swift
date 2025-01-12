@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct LegalNoticeView: View {
     @Environment(\.colorScheme) var colorScheme
     

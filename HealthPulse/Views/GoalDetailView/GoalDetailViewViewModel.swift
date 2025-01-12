@@ -51,6 +51,7 @@ extension GoalDetailViewViewModel {
 extension GoalDetailViewViewModel {
     
     private func loadHealthGoals() {
+        print("loadibng health goals")
         let defaultGoalData = createSampleData(startDay: Date.firstDayOfTheYear, numberOfDays: 250, averageUnits: 8, averageTimeBetweenDataPoints: 3)
         let defaultGoal = HealthGoal(title: "Goal", goalType: .running, startDate: Date.firstDayOfTheYear, endDate: Date.lastDayOfTheYear, doneUnits: 0, goalUnits: 100, unitSelection: .kilometers, actualProgress: 0, expectedProgress: 0, expectedUnits: 0, data: defaultGoalData, graphType: .circle, colorSet: .gray)
 //        let defaultGoal = HealthGoal(title: "Goal", goalType: .running, startDate: Date.firstDayOfTheYear, endDate: Date.lastDayOfTheYear, doneUnits: 0, goalUnits: 100, unitSelection: .kilometers, actualProgress: 0, expectedProgress: 0, expectedUnits: 0, data: [], graphType: .circle, colorSet: .gray)
@@ -90,11 +91,7 @@ extension GoalDetailViewViewModel {
     private func updateHealthGoals() {
         fetchDistance()
         fetchWorkouts()
-        if (selectedHealthGoal.data.isEmpty || selectedHealthGoal.doneUnits == 0.0) {
-            noDataFound = true
-        } else {
-            noDataFound = false
-        }
+        noDataFound = (selectedHealthGoal.data.isEmpty || selectedHealthGoal.doneUnits == 0.0) ? true : false
     }
     
     private func saveToUserDefaults() {
@@ -140,15 +137,19 @@ extension GoalDetailViewViewModel {
     }
     
     private func fetchWorkouts() {
-        
+        print("fetching workouts")
         healthDataManager.fetchWorkouts(healthGoal: selectedHealthGoal, startDate: selectedHealthGoal.startDate, endDate: selectedHealthGoal.endDate) { [weak self] workouts, error in
             DispatchQueue.main.async {
+                guard let self = self else { return }
                 if let error = error {
                     print("Error fetching workouts: \(error.localizedDescription)")
                 } else {
-                    self?.selectedHealthGoal.data = workouts
-                    self?.calculateHealthGoalStatistics()
-                    self?.saveToUserDefaults()
+                    var fetchedWorkouts: [HealthDataPoint] = workouts
+                    fetchedWorkouts.insert(HealthDataPoint(date: self.selectedHealthGoal.startDate, units: 0.0, unitsAcc: 0.0), at: 0)
+                    fetchedWorkouts.append(HealthDataPoint(date: Date.now, units: 0.0, unitsAcc: fetchedWorkouts.last?.unitsAcc ?? 0.0))
+                    self.selectedHealthGoal.data = fetchedWorkouts
+                    self.calculateHealthGoalStatistics()
+                    self.saveToUserDefaults()
                 }
             }
         }

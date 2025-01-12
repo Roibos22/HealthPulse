@@ -17,7 +17,6 @@ struct WidgetPreView: View {
     init(healthGoal: HealthGoal) {
         self.healthGoal = healthGoal
         differenceToExpected = healthGoal.doneUnits - healthGoal.expectedUnits
-        // TESTING: differenceToExpected = -96.6
         if differenceToExpected >= 0 {
             betterThanExpected = true
         } else {
