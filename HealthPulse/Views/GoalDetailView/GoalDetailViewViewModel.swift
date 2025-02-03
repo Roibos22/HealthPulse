@@ -13,7 +13,9 @@ import BackgroundTasks
 class GoalDetailViewViewModel: ObservableObject {
     
     private var healthDataManager: HealthDataManager
-    let healthGoalsPath = FileManager.documentsDirectory.appendingPathComponent("HealthGoals")
+    private let healthGoalsPath = FileManager.documentsDirectory.appendingPathComponent("HealthGoals")
+    private let backgroundTaskIdentifier = "updateData"
+    private let backgroundTaskHours = stride(from: 4, to: 44, by: 4)
 
     @Published var healthGoals: [HealthGoal]
     @Published var selectedHealthGoal: HealthGoal
@@ -51,10 +53,8 @@ extension GoalDetailViewViewModel {
 extension GoalDetailViewViewModel {
     
     private func loadHealthGoals() {
-        print("loadibng health goals")
         let defaultGoalData = createSampleData(startDay: Date.firstDayOfTheYear, numberOfDays: 250, averageUnits: 8, averageTimeBetweenDataPoints: 3)
         let defaultGoal = HealthGoal(title: "Goal", goalType: .running, startDate: Date.firstDayOfTheYear, endDate: Date.lastDayOfTheYear, doneUnits: 0, goalUnits: 100, unitSelection: .kilometers, actualProgress: 0, expectedProgress: 0, expectedUnits: 0, data: defaultGoalData, graphType: .circle, colorSet: .gray)
-//        let defaultGoal = HealthGoal(title: "Goal", goalType: .running, startDate: Date.firstDayOfTheYear, endDate: Date.lastDayOfTheYear, doneUnits: 0, goalUnits: 100, unitSelection: .kilometers, actualProgress: 0, expectedProgress: 0, expectedUnits: 0, data: [], graphType: .circle, colorSet: .gray)
         do {
             let data = try Data(contentsOf: healthGoalsPath)
             healthGoals = try JSONDecoder().decode([HealthGoal].self, from: data)
@@ -99,41 +99,16 @@ extension GoalDetailViewViewModel {
     }
     
     func scheduleBackgroundUpdate() {
-        let request1 = BGAppRefreshTaskRequest(identifier: "updateData")
-        request1.earliestBeginDate = Calendar.current.date(byAdding: .hour, value: 4, to: Date())
-        let request2 = BGAppRefreshTaskRequest(identifier: "updateData")
-        request2.earliestBeginDate = Calendar.current.date(byAdding: .hour, value: 8, to: Date())
-        let request3 = BGAppRefreshTaskRequest(identifier: "updateData")
-        request3.earliestBeginDate = Calendar.current.date(byAdding: .hour, value: 12, to: Date())
-        let request4 = BGAppRefreshTaskRequest(identifier: "updateData")
-        request4.earliestBeginDate = Calendar.current.date(byAdding: .hour, value: 16, to: Date())
-        let request5 = BGAppRefreshTaskRequest(identifier: "updateData")
-        request5.earliestBeginDate = Calendar.current.date(byAdding: .hour, value: 20, to: Date())
-        let request6 = BGAppRefreshTaskRequest(identifier: "updateData")
-        request6.earliestBeginDate = Calendar.current.date(byAdding: .hour, value: 24, to: Date())
-        let request7 = BGAppRefreshTaskRequest(identifier: "updateData")
-        request7.earliestBeginDate = Calendar.current.date(byAdding: .hour, value: 28, to: Date())
-        let request8 = BGAppRefreshTaskRequest(identifier: "updateData")
-        request8.earliestBeginDate = Calendar.current.date(byAdding: .hour, value: 32, to: Date())
-        let request9 = BGAppRefreshTaskRequest(identifier: "updateData")
-        request9.earliestBeginDate = Calendar.current.date(byAdding: .hour, value: 36, to: Date())
-        let request10 = BGAppRefreshTaskRequest(identifier: "updateData")
-        request10.earliestBeginDate = Calendar.current.date(byAdding: .hour, value: 40, to: Date())
-        do {
-            try BGTaskScheduler.shared.submit(request1)
-            try BGTaskScheduler.shared.submit(request2)
-            try BGTaskScheduler.shared.submit(request3)
-            try BGTaskScheduler.shared.submit(request4)
-            try BGTaskScheduler.shared.submit(request5)
-            try BGTaskScheduler.shared.submit(request6)
-            try BGTaskScheduler.shared.submit(request7)
-            try BGTaskScheduler.shared.submit(request8)
-            try BGTaskScheduler.shared.submit(request9)
-            try BGTaskScheduler.shared.submit(request10)
-            print("Background Tasks Scheduled!")
-        } catch(let error) {
-            print("Scheduling Error: \(error.localizedDescription)")
+        backgroundTaskHours.forEach { hourOffset in
+            let request = BGAppRefreshTaskRequest(identifier: backgroundTaskIdentifier)
+            request.earliestBeginDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: Date())
+            do {
+                try BGTaskScheduler.shared.submit(request)
+            } catch {
+                print("Scheduling Error: \(error.localizedDescription)")
+            }
         }
+        print("Background Tasks Scheduled!")
     }
     
     private func fetchWorkouts() {
@@ -146,80 +121,49 @@ extension GoalDetailViewViewModel {
                 } else {
                     var fetchedWorkouts: [HealthDataPoint] = workouts
                     fetchedWorkouts.insert(HealthDataPoint(date: self.selectedHealthGoal.startDate, units: 0.0, unitsAcc: 0.0), at: 0)
-                    fetchedWorkouts.append(HealthDataPoint(date: Date.now, units: 0.0, unitsAcc: fetchedWorkouts.last?.unitsAcc ?? 0.0))
+                    fetchedWorkouts.append(HealthDataPoint(date: min(Date.now, self.selectedHealthGoal.endDate), units: 0.0, unitsAcc: fetchedWorkouts.last?.unitsAcc ?? 0.0))
                     self.selectedHealthGoal.data = fetchedWorkouts
                     self.calculateHealthGoalStatistics()
                     self.saveToUserDefaults()
                 }
             }
         }
-        
-        // TESTING:
-        // selectedHealthGoal = HealthGoal(title: "", goalType: .running, startDate: Date.firstDayOfTheYear, endDate: Date.lastDayOfTheYear, doneUnits: 743, goalUnits: 1000, unitSelection: .kilometers, actualProgress: 744, expectedProgress: 0.677, expectedUnits: 677, data: data, graphType: .circle, colorSet: .gray)
-        // selectedHealthGoal.data = sampleData
-        // selectedHealthGoal.goalUnits = 1000
-        // selectedHealthGoal.doneUnits = sampleData.last!.unitsAcc
-        // selectedHealthGoal.actualProgress = sampleData.last!.unitsAcc / 100
-        // selectedHealthGoal.expectedProgress =  80.8 // sampleData.last!.unitsAcc * 1.2 // 100
-        // selectedHealthGoal.expectedUnits = sampleData.last!.unitsAcc * 1.2
-        // calculateHealthGoalStatistics()
-        // saveToUserDefaults()
-
     }
     
     private func fetchDistance() {
-        if selectedHealthGoal.unitSelection == .kilometers {
-            healthDataManager.fetchRunningDistanceKm(startDate: selectedHealthGoal.startDate, endDate: selectedHealthGoal.endDate) { [weak self] distance, error in
-                DispatchQueue.main.async {
-                    if let error = error {
-                        print("Error fetching distance: \(error.localizedDescription)")
-                    } else {
-                        self?.selectedHealthGoal.doneUnits = distance
-                        self?.calculateHealthGoalStatistics()
-                        self?.saveToUserDefaults()
-                    }
+        let fetchDistanceClosure: (Double?, Error?) -> Void = { [weak self] distance, error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    print("Error fetching distance: \(error.localizedDescription)")
+                } else {
+                    self?.selectedHealthGoal.doneUnits = distance ?? 0.0
+                    self?.calculateHealthGoalStatistics()
+                    self?.saveToUserDefaults()
                 }
             }
-        } else if selectedHealthGoal.unitSelection == .miles {
-            healthDataManager.fetchRunningDistanceMi(startDate: selectedHealthGoal.startDate, endDate: selectedHealthGoal.endDate) { [weak self] distance, error in
-                DispatchQueue.main.async {
-                    if let error = error {
-                        print("Error fetching distance: \(error.localizedDescription)")
-                    } else {
-                        self?.selectedHealthGoal.doneUnits = distance
-                        self?.calculateHealthGoalStatistics()
-                        self?.saveToUserDefaults()
-                    }
-                }
-            }
+        }
+        
+        switch selectedHealthGoal.unitSelection {
+        case .kilometers:
+            healthDataManager.fetchRunningDistanceKm(startDate: selectedHealthGoal.startDate, endDate: selectedHealthGoal.endDate, completion: fetchDistanceClosure)
+        case .miles:
+            healthDataManager.fetchRunningDistanceMi(startDate: selectedHealthGoal.startDate, endDate: selectedHealthGoal.endDate, completion: fetchDistanceClosure)
         }
     }
     
     private func calculateHealthGoalStatistics() {
-        selectedHealthGoal.actualProgress = {
-            if selectedHealthGoal.doneUnits == 0 || selectedHealthGoal.goalUnits == 0 {
-                return 0.0
-            } else {
-                return selectedHealthGoal.doneUnits / selectedHealthGoal.goalUnits
-            }
-        } ()
-        selectedHealthGoal.expectedProgress = {
-            if selectedHealthGoal.doneUnits == 0 || selectedHealthGoal.goalUnits == 0 {
-                return 0.0
-            } else {
-                let totalDuration = selectedHealthGoal.endDate.timeIntervalSince(selectedHealthGoal.startDate) / (60 * 60 * 24)
-                let passedDuration = Date().timeIntervalSince(selectedHealthGoal.startDate) / (60 * 60 * 24)
-                let expectedProgressPerDay = selectedHealthGoal.goalUnits / totalDuration
-                let result = (expectedProgressPerDay * passedDuration) / selectedHealthGoal.goalUnits
-                return result
-            }
-        } ()
-        selectedHealthGoal.expectedUnits = {
-            let totalDuration = selectedHealthGoal.endDate.timeIntervalSince(selectedHealthGoal.startDate) / (60 * 60 * 24)
-               let passedDuration = Date().timeIntervalSince(selectedHealthGoal.startDate) / (60 * 60 * 24)
-               let expectedProgressPerDay = selectedHealthGoal.goalUnits / totalDuration
-            let result = (expectedProgressPerDay * passedDuration)
-            return result
-        } ()
+        let calendar = Calendar.current
+        let startDate = calendar.startOfDay(for: selectedHealthGoal.startDate)
+        let endDate = calendar.startOfDay(for: selectedHealthGoal.endDate)
+        let currentDate = calendar.startOfDay(for: Date())
+        
+        let totalDuration = calendar.dateComponents([.day], from: startDate, to: endDate).day! + 1
+        let passedDuration = min(calendar.dateComponents([.day], from: startDate, to: currentDate).day! + 1, totalDuration)
+        let expectedProgressPerDay = selectedHealthGoal.goalUnits / Double(totalDuration)
+        
+        selectedHealthGoal.actualProgress = selectedHealthGoal.doneUnits / (selectedHealthGoal.goalUnits == 0 ? 1 : selectedHealthGoal.goalUnits)
+        selectedHealthGoal.expectedProgress = (expectedProgressPerDay * Double(passedDuration)) / (selectedHealthGoal.goalUnits == 0 ? 1 : selectedHealthGoal.goalUnits)
+        selectedHealthGoal.expectedUnits = expectedProgressPerDay * Double(passedDuration)
     }
+    
 }
