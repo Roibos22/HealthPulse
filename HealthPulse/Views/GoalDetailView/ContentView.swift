@@ -36,8 +36,7 @@ struct GoalDetailView: View {
                         WidgetSetupView(vm: vm)
                     }
                 }
-                .ignoresSafeArea()
-                .padding(.vertical, 20)
+                .padding(.top, 20)
                 .padding(.horizontal, 30)
             }
             .background(colorScheme == .dark ? backgroundColorDark : backgroundColorLight)
@@ -51,6 +50,7 @@ struct GoalDetailView: View {
                     }
                 }
             }
+            .scrollIndicators(.hidden)
         }
         .sheet(isPresented: $vm.showMenuSheet) {
               MenuView()
