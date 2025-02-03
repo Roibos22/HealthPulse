@@ -10,6 +10,7 @@ import SwiftUI
 struct GoalSetupView: View {
     @ObservedObject var vm: GoalDetailViewViewModel
     @FocusState private var focusItem: Bool
+    @State var isShowingWorkAround = true
 
     var body: some View {
         VStack {
@@ -22,13 +23,43 @@ struct GoalSetupView: View {
             DatePickers(vm: vm)
         }
         .toolbar {
-            ToolbarItem(placement: .keyboard) {
+            ToolbarItemGroup(placement: .keyboard) {
                 Button("Done") {
                     focusItem = false
                     vm.selectedHealthGoal.goalUnits = Double(vm.numberString) ?? 0.0
                     vm.updateData()
                 }
             }
+        }
+        .sheet(isPresented: $isShowingWorkAround) {
+            if #available(iOS 16.4, *) {
+                TemporarySheet {
+                    self.isShowingWorkAround = false
+                } resetCallback: {
+                    self.isShowingWorkAround = false
+                }
+                .presentationBackground(.clear)
+            } else {
+                TemporarySheet {
+                    self.isShowingWorkAround = false
+                } resetCallback: {
+                    self.isShowingWorkAround = false
+                }
+            }
+
+        }
+    }
+}
+
+// Needed to add this, as Apple has a bug in ToolBar visibility. This is a workaround. (https://developer.apple.com/forums/thread/736040)
+struct TemporarySheet: View {
+    let dismissCallback: (() -> Void)
+    let resetCallback: (() -> Void)
+    var body: some View {
+        Text("").onAppear {
+            self.dismissCallback()
+        }.onDisappear {
+            self.resetCallback()
         }
     }
 }
@@ -49,6 +80,7 @@ struct GoalInputField: View {
                         .fill(Color.gray.opacity(0.2))
                 )
                 .multilineTextAlignment(.center)
+                .submitLabel(.done)
         }
     }
 }
