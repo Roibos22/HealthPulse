@@ -92,21 +92,33 @@ extension GoalDetailView {
     }
     
     var noDataFoundView: some View {
-        ZStack {
-            Circle()
-                .frame(width: 280)
-                .opacity(0.2)
-            VStack(alignment: .center) {
-                Image(systemName: "questionmark.folder")
-                    .font(.largeTitle)
-                    .padding(5)
-                Text("No data found.")
-                    .padding(5)
-                Text("Please complete a workout and make sure AppleHealth is enabled in your Settings.")
-                    .multilineTextAlignment(.center)
-                    .padding(5)
+        VStack {
+            ZStack {
+                Circle()
+                    .frame(width: 280)
+                    .opacity(0.2)
+                VStack(alignment: .center) {
+                    Image(systemName: "questionmark.folder")
+                        .font(.largeTitle)
+                        .padding(5)
+                    Text("No data found.")
+                        .padding(5)
+                    Text("Please complete a workout and make sure AppleHealth is enabled in your Settings.")
+                        .multilineTextAlignment(.center)
+                        .padding(5)
+                }
+                .frame(width: 200)
             }
-            .frame(width: 200)
+            .padding(5)
+
+            Button {
+                vm.updateData()
+            } label: {
+                HStack {
+                    Image(systemName: "arrow.triangle.2.circlepath")
+                    Text("Try again")
+                }
+            }
         }
     }
 }
